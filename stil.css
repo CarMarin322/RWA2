@@ -1,0 +1,35 @@
+#menu {
+
+	background-color: lightgray;
+	padding: 10px;		
+}
+
+
+#kategorije{
+    float: left;  
+    width: 20%;
+    line-height: 1.9;
+    background-color: #f1f1f1;
+
+}
+
+
+#trazilica{
+    float: right; 
+    width: 20%; 
+
+}
+
+.alignright {
+	float: right;
+}
+
+#form {
+
+    border: 2px solid #000000;
+    padding: 30px;
+    line-height: 1.5;
+    text-align: center;  
+    width: 240px;
+    margin: auto;
+}
