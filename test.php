@@ -1,6 +1,6 @@
 <?php
-include 'db_connection.php';
-$conn = OpenCon();
-echo "Connected Successfully";
-CloseCon($conn);
+$content = $_GET["content"];
+$file = uniqid() . ".html";
+file_put_contents($file, $content);
+echo $file;
 ?>

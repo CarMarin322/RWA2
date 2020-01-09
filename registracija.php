@@ -163,19 +163,20 @@
         </div>
         
         <div id="form" >
+            <b>REGISTRACIJA:</b> <br> <br> <br>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                Osobni podaci:<br>
-                *Ime:<input type="text" name="ime">
+               <b>Osobni podaci:</b> <br><br>
+                *Ime:  <input type="text" name="ime">
                 <span class="error"><?php echo $ime_err;?></span><br>
-                *Prezime: <input type="text" name="prezime">
-                <span class="error"><?php echo $prezime_err;?></span><br><br>
+                *Prezime:  <input type="text" name="prezime">
+                <span class="error"><?php echo $prezime_err;?></span><br>
                 
                 *Rod: 
                 <input type="radio" name="rod" value="muski"> Muški
                 <input type="radio" name="rod" value="zenski"> Ženski
                 <span class="error"><?php echo $rod_err;?></span>
                 <br>
-                Datum rođenja: <br>
+                Datum rođenja:
                 <select name="dan">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -320,22 +321,22 @@
                 <span class="error"><?php echo $datum_err;?></span>
                 <br>
                *email: <input type="email" name="email">
-               <span class="error"><?php echo $email_err;?></span><br>
-                Adresa: <br>
+               <span class="error"><?php echo $email_err;?></span><br> <br>
+                <b> Adresa: </b><br> <br>
                 Ulica: <input type="text" name="ulica"><br>
                 Poštanski broj: <input type="text" name="pobr">
                 <span class="error"><?php echo $pobr_err;?></span><br>
                 Grad: <input type="text" name="grad">
                 <span class="error"><?php echo $grad_err;?></span><br>
                 Zemlja: <input type="text" name="zemlja">
-                <span class="error"><?php echo $zemlja_err;?></span><br>
-                Kontakt: <br>
+                <span class="error"><?php echo $zemlja_err;?></span><br><br>
+                 <b>Kontakt:</b>  <br><br>
                 Telefon: <input type="text" name="telefon">
-                <span class="error"><?php echo $telefon_err;?></span><br>
+                <span class="error"><?php echo $telefon_err;?></span><br> <br> <br>
                 *Lozinka: <input type="password" name="lozinka">
                 <span class="error"><?php echo $lozinka_err;?></span><br>
                 *Ponovi lozinku: <input type="password" name="provjera_lozinke">
-                <span class="error"><?php echo $provjera_err;?></span><br>
+                <span class="error"><?php echo $provjera_err;?></span><br> <br>
                 <input type="submit" value="Registriraj se!">
             </form>
 

@@ -7,36 +7,48 @@
     <body>
         
         <?php
-            $match =  $save = false;
+            $match =  false;
+            $save = true;
             
             $email = $lozinka = "";
-            $email_err = $lozinka_err = "";
+            $email_err = $err = "";
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $email = test_input($_POST["email"]);
-                $lozinka = test_input($_POST["lozinka"]);
-            }
+               
 
+                if(empty($_POST["email"])){
+                    $email_err = "Molimo vas unesite vaš email";
+                    $save = false;
+                }else{
+                    $email = test_input($_POST["email"]);
+                   
+                }
+                $lozinka = test_input($_POST["lozinka"]);
+           
+
+                if($save == true){
+                    include 'db_connection.php';
+                    $conn = OpenCon();
+                    $sql = "SELECT kupac_mail, lozinka FROM `kupac`";
+                    $result = $conn->query($sql);
+                    if($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+                            if($row["kupac_mail"] == $email && $row["lozinka"] == $lozinka){
+                            $match = true;
+                            }
+                        }
+                    }
+                    CloseCon($conn);
+                    if($match) $err = "Prijava uspješna";
+                    else $err = "Prijava neuspjesna";
+                }
+            }
+            
             function test_input($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
                 return $data;
-            }
-            if($save){
-                include 'db_connection.php';
-                $conn = OpenCon();
-                $sql = "SELECT kupac_mail, lozinka FROM `kupac`";
-                $result = $conn->query($sql);
-                if($result->num_rows > 0){
-                    while($row = $result->fetch_assoc()){
-                        if($row["kupac_mail"] == $email && $row["lozinka"] == $lozinka){
-                          $match = true;
-                        }
-                    }
-                }
-                if($match) echo "prijava uspjesna";
-                else echo "prijava neuspjesna";
             }
         
         ?>
@@ -53,20 +65,26 @@
         </div>
         
         <div id="form">
-            <div id=prijava_lijevo>
-                Postojeći korisnik: <br> <br> 
+            <b>PRIJAVA:</b> <br> <br> <br>
+            <div class="alignleft">
+               <b>POSTOJEĆI KORISNIK: </b> <br> <br> 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    Elektronska pošta: <input type="email" name="email"><br> <br>
+                    Elektronska pošta: <input type="email" name="email"> <br> <span class="error"><?php echo $email_err;?></span> <br> <br>
                     Lozinka: <input type="password" name="lozinka"><br><br>
-                    <input type="submit" value="Prijavi se!">
+                    <input type="submit" value="PRIJAVI SE!"> <br> <br>
+                    <span class="error"><?php echo $err;?></span>
                 </form>
             </div>
-            <div id="prijava_desno">
+            <div class="alignright">
+                <b>NOVI KORISNIK:</b> <br> <br> <br>
+                <input type="button" value="REGISTRIRAJ SE!" onclick="window.open('http://localhost/dashboard/RWA/registracija.php', '_self')">
             </div>
           
         </div>
 
-        
+        <script>
+           
+        </script>
     </body>
 
 

@@ -21,15 +21,21 @@
 }
 
 .alignright {
+    
 	float: right;
+}
+
+.alignleft {
+
+    float: left;
 }
 
 #form {
 
-    border: 2px solid #1616ad;
-    
-    line-height: 1;
-    text-align: center;  
+   
+    padding: 30px;
+    line-height: 1.5;
+    text-align: left;  
     width: 50%;
     margin: auto;
 }
