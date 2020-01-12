@@ -1,3 +1,6 @@
+<?php
+    session_start();    
+?>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="stil.css">
@@ -19,7 +22,8 @@
 
 	<body>
 		<div id=menu>
-			<?php include 'templates/menu.php';?>
+			<?php
+			include 'templates/menu.php';?>
 		</div>
 		
 		<div id="kategorije" >		

@@ -1,14 +1,11 @@
 <?php
     include 'db_connection.php';
-    $conn = OpenCon();
+    $conn = OpenConn();
     $sql = "SELECT * FROM `kategorija`";
     $result = $conn->query($sql);
-   
-   
-  
     CloseCon($conn);
-    
 ?>
+
 
 <html>
     <head>
@@ -21,13 +18,14 @@
             <?php 
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
-                    echo '<a href="prikaziKategoriju.php?catid=';
-                    echo $row['kategorija_ime'];
-                    echo '<li>';
-                    echo $row["kategorija_ime"];
-                    echo '</li> </a>';
+            ?>
+
+            <a href="prikaziKategoriju.php?catName=<?php echo $row['kategorija_ime']; ?>"> <li><button><?php echo $row['kategorija_ime']; ?> </button></li></a>  
+
+            <?php
                     }
                 }
+                
             ?>
         </ul>
     </body>

@@ -1,3 +1,6 @@
+<?php
+    session_start();    
+?>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="stil.css">
@@ -109,8 +112,8 @@
                     $save = false;
                 }
             }
-            include 'db_connection.php';
-            $conn = OpenCon();
+            include_once 'db_connection.php';
+            $conn = OpenConn();
             $sql = "SELECT kupac_mail FROM `kupac`";
             $result = $conn->query($sql);
             if($result->num_rows > 0){
@@ -152,10 +155,6 @@
         ?>
         <div id="menu">
             <?php include 'templates/menu.php';?>
-        </div>
-
-        <div id="kategorije" >		
-			<?php include 'templates/kategorije.php'?>
         </div>
         
         <div id="trazilica">

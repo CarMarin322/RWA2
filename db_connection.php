@@ -1,6 +1,5 @@
 <?php
-function OpenCon()
- {
+function OpenConn(){
  $dbhost = "localhost";
  $dbuser = "root";
  $dbpass = "Knyn2bf5";
