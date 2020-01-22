@@ -40,13 +40,14 @@
                 if($save == true){
                     include_once 'db_connection.php';
                     $conn = OpenConn();
-                    $sql = "SELECT kupac_mail, lozinka, kupac_ime FROM `kupac`";
+                    $sql = "SELECT kupac_mail, lozinka, kupac_ime,kupac_id FROM `kupac`";
                     $result = $conn->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
                             if($row["kupac_mail"] == $email && $row["lozinka"] == $lozinka){
                                 $match = true;
                                 $user = $row["kupac_ime"];
+                                $userId = $row["kupac_id"];
                                
                             }
                         }
@@ -57,6 +58,7 @@
                         $err = "Prijava uspješna";
                         
                         $_SESSION['korisnik'] = $user;
+                        $_SESSION['korisnikId'] = $userId;
                         $_SESSION["prij/odj"] = "Odjava";
                     } 
                     else $err = "Prijava neuspjesna";
