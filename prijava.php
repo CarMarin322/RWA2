@@ -18,7 +18,14 @@
             $email_err = $err = "";
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-               
+                
+                if(isset($_POST['odjava'])){
+                    unset($_SESSION['korisnik']);
+                    unset($_SESSION['num']);
+                    unset($_SESSION['numArt']);
+                    unset($_SESSION['kosarica']);
+                    $_SESSION["prij/odj"] = "Prijava";
+                }else{
 
                 if(empty($_POST["email"])){
                     $email_err = "Molimo vas unesite vaš email";
@@ -40,7 +47,7 @@
                             if($row["kupac_mail"] == $email && $row["lozinka"] == $lozinka){
                                 $match = true;
                                 $user = $row["kupac_ime"];
-                                $_SESSION['korisnik'] = $user;
+                               
                             }
                         }
                     }
@@ -49,9 +56,11 @@
                     if($match){
                         $err = "Prijava uspješna";
                         
+                        $_SESSION['korisnik'] = $user;
+                        $_SESSION["prij/odj"] = "Odjava";
                     } 
                     else $err = "Prijava neuspjesna";
-                   
+                }
                 }
             }
             
@@ -80,8 +89,12 @@
                <?php 
                 if (isset($_SESSION['korisnik'])){
 
-               
-                    echo "odjavi se";
+                    echo 'Dobrodošao/la ' . $_SESSION["korisnik"];
+                ?>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <br> <br><input type="submit" name="odjava" value="ODJAVI  SE!"> <br>
+                    </form>
+                <?php
                 }else{
                 ?>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">

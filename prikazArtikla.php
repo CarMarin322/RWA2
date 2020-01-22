@@ -34,17 +34,39 @@
             <b>Naziv: </b> <span><?php echo $row["artikl_naziv"]; ?> </span> <br> 
             <b>Cijena: </b> <span><?php echo $row["artikl_cijena"]; ?> kn</span> <br>
             <b>Specifikacije: </b> <br> </b> <span><?php echo $row["opis"]; ?></span>
-            <form action="dodajUKosaricu.php?artId=<?php echo $row["artikl_id"];?>" method="GET">
-                <input type="submit" value="kosarica">
-            </form>
+            <br> <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>&cart=<?php echo $row["artikl_id"]?>"><button>Spremi u košaricu</button></a>
          
 
         <?php
             }
         } 
-            if(isset($_GET["kosarica"])){
-                echo "spremljeno";
+        if(isset($_GET["cart"])){
+            if(!isset($_SESSION['num'])){
+                $_SESSION['num']=1;
             }
+            else{
+                $_SESSION['num'] += 1;
+            }
+            $cart = $_GET["cart"];
+            $postoji = false;
+            if(!isset($_SESSION['kosarica'])){
+                $_SESSION['kosarica'] = array();
+                $_SESSION['numArt'] = array();
+                array_push($_SESSION['kosarica'], $cart);
+                array_push($_SESSION['numArt'], 1);
+            }else{
+                for($i = 0; $i < count($_SESSION['kosarica']); $i++){
+                    if($_SESSION['kosarica'][$i] == $cart){
+                        $_SESSION['numArt'][$i] += 1;
+                        $postoji = true;
+                    }
+                }
+                if(!$postoji){
+                    array_push($_SESSION['kosarica'], $cart);
+                    array_push($_SESSION['numArt'], '1');
+                }
+            }
+        }
             closeCon($conn);
 
         ?>
