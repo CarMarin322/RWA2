@@ -19,6 +19,7 @@
         `postanski` = '$postanski', `grad` = '$grad',
         `zemlja` = '$zemlja', `telefon` = '$telefon'
         WHERE `kupac`.`kupac_id` = '$id'";
+        $_SESSION['korisnik'] = $ime;
         $conn->query($sql);
       
         

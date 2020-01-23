@@ -1,5 +1,5 @@
 <?php
-    session_start();    
+    session_start();   
 ?>
 <html>
     <head>
@@ -12,21 +12,22 @@
         </div>
 
 
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
+        <div id="trazilica" >
+			<?php include 'templates/trazilicaIPoruka.php';?>
         </div>
         
-        <div id="informacije">
-          <form action="nastavakPlacanje" method = "POST">
+        <div id="placanje">
+          <form>
           <h3>Odaberi način plaćanja:</h3>
-          <input type="radio" name="placanje" value="gotovina">Plaćanje gotovinom pri preuzimanju </input>
-          <br> <br><input type="radio" name="placanje" value="kartica">Kartično plaćanje </input>
+          <input type="radio" name="placanje" value="gotovina" onclick="window.open('http://localhost/dashboard/RWA/placanjeGotovinom.php', '_self');">Plaćanje gotovinom pri preuzimanju </input>
+          <br> <br><input type="radio" name="placanje" value="kartica" checked="checked" onclick="window.open('http://localhost/dashboard/RWA/placanjeKarticom.php', '_self');">Kartično plaćanje </input>
           <br><br>
-          <input type="submit" value="Nastavi">
+            
+            
           </form>
         </div>
 
-        
+     
     </body>
 
 

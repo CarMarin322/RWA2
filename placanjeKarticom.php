@@ -1,42 +1,30 @@
-if(isset($_GET["cart"])){
-                        $cart = $_GET["cart"];
-                        $postoji = false;
-                        if(!isset($_SESSION['kosarica'])){
-                            $_SESSION['kosarica'] = array();
-                            $_SESSION['numArt'] = ;
-
-                            array_push($_SESSION['kosarica'], $cart);
-                            array_push($_SESSION['numArt'], '1');
-                        }else{
-                            for($i = 0; $i < count($_SESSION['kosarica']); $i++){
-                                if($_SESSION['kosarica'][$i] == $cart){
-                                    $_SESSION['numArt'][$i] += 1;
-                                    $postoji = true;
-                                }
-                            }
-                            if(!$postoji){
-                                array_push($_SESSION['kosarica'], $cart);
-                                array_push($_SESSION['numArt'], '1');
-                            }
-                        }
-                            
-                    }
+<?php
+    session_start();   
+?>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="stil.css">
+    </head>
+    
+    <body>
+        <div id="menu">
+            <?php include 'templates/menu.php';?>
+        </div>
 
 
-                    window.open('http://localhost/dashboard/RWA/kosarica.php?kol=-&n=<?php echo $i;?>
-                    ?>
-                                <b><?php $row["kupac_ime"]?></b> <b><?php $row["kupac_prezime"]?></b>
-                                <?php
-
-
-$sql = "UPDATE `kupac` SET `kupac_ime` = '$ime',
-`kupac_prezime` = '$prezime', `kupac_mail` = '$email',
-`rod` = '$rod', `ulica` = '$ulica',
-`postanski` = '$postanski', `grad` = '$grad',
-`zemlja` = '$zemlja', `telefon` = '$telefon'
-WHERE `kupac`.`kupac_id` = '$id'";
-
-
+        <div id="trazilica" >
+			<?php include 'templates/trazilicaIPoruka.php';?>
+        </div>
+        
+        <div id="placanje">
+          <form>
+          <h3>Odaberi način plaćanja:</h3>
+          <input type="radio" name="placanje" value="gotovina" onclick="window.open('http://localhost/dashboard/RWA/placanjeGotovinom.php', '_self');">Plaćanje gotovinom pri preuzimanju </input>
+          <br> <br><input type="radio" name="placanje" value="kartica" checked="checked" onclick="window.open('http://localhost/dashboard/RWA/placanjeKarticom.php', '_self');">Kartično plaćanje </input>
+          <br><br>
+            
+            <p id="placanjeKarticom" hidden>
+                
 <h3>Podaci o kartici:</h3> <br> 
 Broj kreditne/debitne kartice: 
 <input type="text" name="brojKartice" placeholder="Upišite broj kartice"> </input>
@@ -136,3 +124,12 @@ if($result && $result->num_rows > 0){
 closeCon($conn);
 ?>
 <input type="submit" value = "Plati i završi narudžbu"></input>
+            </p>
+          </form>
+        </div>
+
+     
+    </body>
+
+
+</html>

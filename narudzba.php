@@ -82,8 +82,10 @@
                         
                         
                         <?php
+                        
                     }
                 }
+                
             }
                 ?>
                 </table>
@@ -99,7 +101,7 @@
                     
                 <?php
             }
-            closeCon($conn);
+           
         ?>
         </div>
 
