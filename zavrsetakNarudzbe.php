@@ -11,10 +11,16 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+        <div id="kategorije" >		
+			<?php include 'templates/kategorije.php'?>
+        </div>
 
+        <div id="trazilica">
+			<?php include 'templates/trazilicaIPoruka.php'?>
+        </div>
         
-        <div id="dodajArtikl">
-        
+        <div id="Zavrsetak">
+           Uspješno ste izvršili narudžbu
         </div>
 
         

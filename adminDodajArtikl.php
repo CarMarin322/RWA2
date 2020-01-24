@@ -1,0 +1,100 @@
+<?php
+    session_start();   
+    include_once 'db_connection.php';
+    $conn = OpenConn();
+    $save = true;
+    $naziv = $cijena = $kategorija = $slika = $opis = '';
+    $kategorijaErr = $cijenaErr = $dodajErr= '';
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(empty($_POST['naziv']) || empty($_POST['cijena'])
+        || empty($_POST['kategorija']) || empty($_POST['slika'])
+        || empty($_POST['opis'])){
+            echo 'Sve mora bit ispunjeno';
+        }else{
+            $naziv = test_input($_POST['naziv']);
+            $cijena = test_input($_POST['cijena']);
+            if(is_numeric($cijena) == false && $cijena != ""){
+                $cijenaErr = "Cijena ne može sadržavati slova";
+                $save = false;
+            } 
+            $kategorija = test_input($_POST['kategorija']);
+            if(is_numeric($kategorija) == false && $kategorija != ""){
+                $kategorijaErr = "Odaberite redni broj kategorije";
+                $save = false;
+            }  
+            $slika = test_input($_POST['slika']);
+            $opis = test_input($_POST['opis']);
+
+            if($save){
+                $sql = "SET FOREIGN_KEY_CHECKS=0";
+                $conn->query($sql);
+                $sql = "INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_cijena`, `artikl_kategorija`, `slika`, `opis`)
+                VALUES ('', '$naziv', '$cijena', '$kategorija', '$slika', '$opis')";
+                if ($conn->query($sql) === TRUE) {
+                    $dodajErr = "Artikl je dodan u bazu";
+                } else {
+                    $dodajErr = "Neuspješno dodavanje Artikla";
+                }
+                $sql = "SET FOREIGN_KEY_CHECKS=1";
+                $conn->query($sql);
+    }
+        }
+        
+    } 
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    CloseCon($conn); 
+?>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="stil.css">
+    </head>
+    
+    <body>
+        <div id="menu">
+            <?php include 'templates/menu.php';?>
+        </div>
+
+
+        
+        <div id="dodajArtikl">
+            <h3>Dodavanje Artikala:</h3>
+            <br>
+            <form action="adminDodajArtikl.php" method ="POST">
+            Naziv:
+            <input type="text" name="naziv">
+            <br> <br>
+            Cijena:
+            <input type="text" name="cijena">
+            <?php echo $cijenaErr;?>
+            <br> <br>
+            Kategorija:
+            <input type="text" name="kategorija">
+            <?php echo $kategorijaErr;?>
+            <br> <br>
+            Slika:
+            <input type="text" name="slika">
+            <br> <br>
+            Opis:
+            <br>
+            <textarea name="opis" cols="60" rows="30"></textarea>
+            <br> <br>
+            <input type="submit" value="Dodaj">
+            </form>
+            <br>
+            <a href="adminPregled.php">Povratak na pregled artikala</a>
+            <br>
+            <p> <?php echo $dodajErr;?></p>
+        
+        </div>
+
+        
+    </body>
+
+
+</html>

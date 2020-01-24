@@ -9,7 +9,7 @@
     <body>
     <?php 
         $save = true;           
-        $ime_err = $prezime_err = $rod_err = $email_err = $lozinka_err = $provjera_err = $rodenje_err = $telefon_err = $grad_err = $zemlja_err = $pobr_err = $datum_err = "";
+        $ime_err = $ulica_err= $prezime_err = $rod_err = $email_err = $lozinka_err = $provjera_err = $rodenje_err = $telefon_err = $grad_err = $zemlja_err = $pobr_err = $datum_err = "";
         $ime = $prezime = $rod = $dan = $mjesec = $godina = $email = $ulica = $pobr = $grad = $zemlja = $telefon = $lozinka = $provjera_lozinke = "";
         
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -57,7 +57,7 @@
             }
 
             if(empty($_POST["lozinka"])){
-                $lozinka_err = "Molimo vas unesite lozinke";
+                $lozinka_err = "Molimo vas unesite lozinku";
                 $save = false;
             }else{
                 $lozinka = test_input($_POST["lozinka"]);
@@ -80,24 +80,53 @@
             if(is_numeric($telefon) == false && $telefon != ""){
                 $telefon_err = "Ne možete imati slova unutar broja telefona";
                 $save = false;
-            }     
-                    
-            $ulica = test_input($_POST["ulica"]);
-            $pobr = test_input($_POST["pobr"]);
-            if(is_numeric($pobr) == false && $pobr != ""){
-                $pobr_err = "Ne možete imati slova unutar poštanskog broja";
-                $save = false;
             } 
-            $grad = test_input($_POST["grad"]);
-            if (!preg_match("/^[a-zA-Z ]*$/",$grad)) {
-                $grad_err = "Samo slova i razmak su dopušteni";
+
+                    
+            
+            if(empty($_POST["ulica"])){
+                $ulica_err = "Molimo vas unesite vašu ulicu";
                 $save = false;
+            }else{
+                $ulica = test_input($_POST["ulica"]);
+                
             }
-            $zemlja = test_input($_POST["zemlja"]);
-            if (!preg_match("/^[a-zA-Z ]*$/",$zemlja)) {
+
+            
+            if(empty($_POST["pobr"])){
+                $pobr_err = "Molimo vas unesite vaš poštanski broj";
+                $save = false;
+            }else{
+                $pobr = test_input($_POST["pobr"]);
+                if(is_numeric($pobr) == false && $pobr != ""){
+                    $pobr_err = "Ne možete imati slova unutar poštanskog broja";
+                    $save = false;
+                } 
+            }
+            if(empty($_POST["grad"])){
+                $grad_err = "Molimo vas unesite vaš grad";
+                $save = false;
+            }else{
+                $grad = test_input($_POST["grad"]);
+                if (!preg_match("/^[a-zA-Z ]*$/",$grad)) {
+                    $grad_err = "Samo slova i razmak su dopušteni";
+                    $save = false;
+                }
+            }
+            if(empty($_POST["zemlja"])){
+                $zemlja_err = "Molimo vas unesite zemlja";
+                $save = false;
+            }else{
+                $zemlja = test_input($_POST["zemlja"]);
+                if (!preg_match("/^[a-zA-Z ]*$/",$zemlja)) {
                 $zemlja_err = "Samo slova i razmak su dopušteni";
                 $save = false;
+                }
             }
+           
+           
+           
+           
             
             $godina = test_input($_POST["godina"]);
             $mjesec = test_input($_POST["mjesec"]);
@@ -322,12 +351,13 @@
                *email: <input type="email" name="email">
                <span class="error"><?php echo $email_err;?></span><br> <br>
                 <b> Adresa: </b><br> <br>
-                Ulica: <input type="text" name="ulica"><br>
-                Poštanski broj: <input type="text" name="pobr">
+                *Ulica: <input type="text" name="ulica"><br>
+                <span class="error"><?php echo $ulica_err;?></span> <br>
+                *Poštanski broj: <input type="text" name="pobr">
                 <span class="error"><?php echo $pobr_err;?></span><br>
-                Grad: <input type="text" name="grad">
+                *Grad: <input type="text" name="grad">
                 <span class="error"><?php echo $grad_err;?></span><br>
-                Zemlja: <input type="text" name="zemlja">
+                *Zemlja: <input type="text" name="zemlja">
                 <span class="error"><?php echo $zemlja_err;?></span><br><br>
                  <b>Kontakt:</b>  <br><br>
                 Telefon: <input type="text" name="telefon">
