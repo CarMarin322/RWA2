@@ -7,7 +7,6 @@
         $korisnikId = $_SESSION['korisnikId'];
         $placanje = $_POST['placanje'];
         $datum = date("Y-m-d");
-        $karticaId = NULL;
         $err = false;
 
         include_once 'db_connection.php';
@@ -15,20 +14,19 @@
         $sql = "SET FOREIGN_KEY_CHECKS=0";
         
         $conn->query($sql); 
-        $sql = "INSERT INTO `narudzba` ( `kupac_id`, `status`, `datum`, `dostava`, `napomena`, `placanje`, `karticaId`)
-        VALUES ('$korisnikId', 'naruceno', '$datum', '$dostava', '$napomena', '$placanje', '$karticaId')";
+        $sql = "INSERT INTO `narudzba` ( `kupac_id`, `status`, `datum`, `dostava`, `napomena`, `placanje`)
+        VALUES ('$korisnikId', 'naruceno', '$datum', '$dostava', '$napomena', '$placanje')";
         if($conn->query($sql)){
             $sql = "SELECT `narudzba_id` FROM `narudzba` ORDER BY `narudzba_id` DESC LIMIT 1";
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
             $narudzbaId = $row['narudzba_id'];
-            echo $narudzbaId;
+            
             for($i = 0; $i < sizeof($_SESSION['kosarica']); $i++){
                 if($_SESSION['numArt'][$i] > 0){
                     $kolicina = $_SESSION['numArt'][$i];
                     $artId = $_SESSION['kosarica'][$i];
-                    echo $kolicina;
-                    echo $artId;
+                   
                     $sql = "INSERT INTO `na_artikl` (`narudzba_id`, `stavka_id`, `artikl_id`, `kolicina`, `popust`)
                     VALUES ('$narudzbaId', '$artId', '$artId', '$kolicina', '0')";
                     if(!$conn->query($sql)){
@@ -38,12 +36,17 @@
                 } 
             }
         }
+        else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
         if(!$err){
             $sql = "SET FOREIGN_KEY_CHECKS=1";
             $conn->query($sql); 
             unset($_SESSION['num']);
             unset($_SESSION['numArt']);
             unset($_SESSION['kosarica']);
+            unset($_SESSION['dostava']);
+            unset($_SESSION['napomena']);
             header("Location: http://localhost/dashboard/RWA/zavrsetakNarudzbe.php");
         }
       

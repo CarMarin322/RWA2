@@ -1,5 +1,91 @@
 <?php
-    session_start();   
+    session_start(); 
+    $dostava=$napomena=$korisnikId=$placanje=$karticaId = $brojKartice= $mjesecIstek = $godinaIstek = $cvv = '';
+    $error = $brojErr = $cvvErr= '';
+    $save = true;
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(empty($_POST['brojKartice']) || empty($_POST['brojKartice'])){
+            $error = "Morate ispuniti sve podatke o kartici";
+        }else{
+            $dostava = $_SESSION['dostava'];
+            $napomena = $_SESSION['napomena'];
+            $korisnikId = $_SESSION['korisnikId'];
+            $placanje = $_POST['placanje'];
+            $datum = date("Y-m-d");
+            $err = false;
+            $brojKartice = test_input($_POST["brojKartice"]);
+            if(is_numeric($brojKartice) == false && $brojKartice != ""){
+                $brojErr = "Ne možete imati slova unutar broja kartice";
+                $save = false;
+            } 
+            $cvv = test_input($_POST["cvv"]);
+            if(is_numeric($cvv) == false && $cvv != ""){
+                $cvvErr = "Ne možete imati slova unutar CVV-a";
+                $save = false;
+            } else if(strlen($cvv) != 4){
+                $cvvErr = "CVV mora sadržavati 4 broja";
+                $save = false;
+            }
+
+            include_once 'db_connection.php';
+            $conn = OpenConn();
+            if($save){
+                $sql = "SET FOREIGN_KEY_CHECKS=0";
+                
+                $conn->query($sql); 
+                $sql = "INSERT INTO `narudzba` ( `kupac_id`, `status`, `datum`, `dostava`, `napomena`, `placanje`)
+                VALUES ('$korisnikId', 'naruceno', '$datum', '$dostava', '$napomena', '$placanje')";
+                if($conn->query($sql)){
+                    $sql = "INSERT INTO `kartica` (`broj`, `istek`, `cvv`, `kupacId`)
+                    VALUES ('$brojKartice', '$godinaIstek-$mjesecIstek', '$cvv', '$korisnikId')";
+                     if(!$conn->query($sql)){
+                        $err = true;
+                    }
+                    $sql = "SELECT `narudzba_id` FROM `narudzba` ORDER BY `narudzba_id` DESC LIMIT 1";
+                    $result = $conn->query($sql);
+                    $row = $result->fetch_assoc();
+                    $narudzbaId = $row['narudzba_id'];
+                   
+                    for($i = 0; $i < sizeof($_SESSION['kosarica']); $i++){
+                        if($_SESSION['numArt'][$i] > 0){
+                            $kolicina = $_SESSION['numArt'][$i];
+                            $artId = $_SESSION['kosarica'][$i];
+                            
+                            $sql = "INSERT INTO `na_artikl` (`narudzba_id`, `stavka_id`, `artikl_id`, `kolicina`, `popust`)
+                            VALUES ('$narudzbaId', '$artId', '$artId', '$kolicina', '0')";
+                            if(!$conn->query($sql)){
+                                $err = true;
+                            }
+                            
+                        } 
+                    }
+                }
+                else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+                if(!$err){
+                    $sql = "SET FOREIGN_KEY_CHECKS=1";
+                    $conn->query($sql); 
+                    unset($_SESSION['num']);
+                    unset($_SESSION['numArt']);
+                    unset($_SESSION['kosarica']);
+                    unset($_SESSION['dostava']);
+                    unset($_SESSION['napomena']);
+                   header("Location: http://localhost/dashboard/RWA/zavrsetakNarudzbe.php");
+                }
+            }
+        }
+       
+       
+       
+        
+    } 
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }   
 ?>
 <html>
     <head>
@@ -17,19 +103,19 @@
         </div>
         
         <div id="placanje">
-          <form action="završetakNarudžbe.php" method = "POST">
+          <form action="placanjeKarticom.php" method = "POST">
           <h3>Odaberi način plaćanja:</h3>
           <input type="radio" name="placanje" value="gotovina" onclick="window.open('http://localhost/dashboard/RWA/placanjeGotovinom.php', '_self');">Plaćanje gotovinom pri preuzimanju </input>
           <br> <br><input type="radio" name="placanje" value="kartica" checked="checked" onclick="window.open('http://localhost/dashboard/RWA/placanjeKarticom.php', '_self');">Kartično plaćanje </input>
           <br><br>
             
-            <p id="placanjeKarticom" hidden>
+            
                 
 <h3>Podaci o kartici:</h3> <br> 
-Broj kreditne/debitne kartice: 
-<input type="text" name="brojKartice" placeholder="Upišite broj kartice"> </input>
+*Broj kreditne/debitne kartice: 
+<input type="text" name="brojKartice" placeholder="Upišite broj kartice"> </input> <?php echo $brojErr;?>
 <br> <br>
-Datum isteka kartice:
+*Datum isteka kartice:
 <select name="mjesecIstek">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -70,9 +156,12 @@ Datum isteka kartice:
 
 </select>
 <br> <br>
-CVV kod:
-<input type="text" name="cvv" placeholder="xxxx"></input>
-<h3>Podaci o vlasniku kartice:</h3> <br>
+*CVV kod:
+<input type="text" name="cvv" placeholder="xxxx"></input> <?php echo $cvvErr;?>
+<br>
+<?php echo $error;?>
+<h3>Podaci o vlasniku kartice: </h3> 
+<p>*Možete platiti isključivo karticom koja glasi na vaše ime*</p> <br>
 <?php
  include_once 'db_connection.php';
  $conn = OpenConn();
@@ -82,34 +171,16 @@ if($result && $result->num_rows > 0){
     while($row = $result->fetch_assoc()){
         if($row["kupac_id"]==$_SESSION['korisnikId']){
             ?>
-           
-                 Ime:
-                 <input type="text" name="ime" value="<?php echo $row['kupac_ime'];?>"> </input>
-                 <br> <br>
-                 Prezime:
-                 <input type="text" name="prezime" value="<?php echo $row['kupac_prezime'];?>"> </input>
-                 <br> <br>
-                 Email:
-                 <input type="text" name="email" value="<?php echo $row['kupac_mail'];?>"> </input>
-                 <br> <br>
-                 Rod:
-                 <input type="text" name="rod" value="<?php echo $row['rod'];?>"> </input>
-                 <br> <br>
-                 Ulica:
-                 <input type="text" name="ulica" value="<?php echo $row['ulica'];?>"> </input>
-                 <br> <br>
-                 Poštanski broj:
-                 <input type="text" name="postanski" value="<?php echo $row['postanski'];?>"> </input>
-                 <br> <br>
-                 Grad:
-                 <input type="text" name="grad" value="<?php echo $row['grad'];?>"> </input>
-                 <br> <br>
-                 Zemlja:
-                 <input type="text" name="zemlja" value="<?php echo $row['zemlja'];?>"> </input>
-                 <br> <br>
-                 Telefon:
-                 <input type="text" name="telefon" value="<?php echo $row['telefon'];?>"> </input>
-                 <br> <br>
+            <b><?php echo $row["kupac_ime"];?></b> 
+            <b><?php echo $row["kupac_prezime"];?></b>
+            <p><?php echo $row["kupac_mail"];?></p>
+            <p><?php echo $row["ulica"];?></p>
+            <p><?php echo $row["grad"];?></p>
+            <p><?php echo $row["postanski"];?></p>
+            <p><?php echo $row["zemlja"];?></p>
+            <p><?php echo $row["telefon"];?></p>
+            
+            
                 
            
           
@@ -123,6 +194,7 @@ if($result && $result->num_rows > 0){
 
 closeCon($conn);
 ?>
+
 <input type="submit" value = "Plati i završi narudžbu"></input>
             </p>
           </form>

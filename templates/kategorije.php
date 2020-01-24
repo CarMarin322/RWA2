@@ -4,7 +4,11 @@
     $sql = "SELECT * FROM `kategorija`";
     $result = $conn->query($sql);
     CloseCon($conn);
-    $_SESSION["artPerPage"] = 4;
+    if(!isset($_SESSION["artPerPageAdmin"])){
+        $_SESSION["artPerPage"] = 4;
+    }else{
+        $_SESSION["artPerPage"] = $_SESSION["artPerPageAdmin"];
+    }
 ?>
 
 
@@ -29,5 +33,8 @@
                 
             ?>
         </ul>
+     <br> <br> <br>
+     
+        
     </body>
 </html>

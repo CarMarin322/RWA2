@@ -99,7 +99,9 @@
                    
                 ?>
         </div>
+        
         <div>
+        <br> <br> <br>
             <?php
              $sql = "SELECT COUNT(*) AS broj FROM `artikl` WHERE `artikl_kategorija` = $catid";
              $result = $conn->query($sql);

@@ -3,15 +3,21 @@
     $conn = OpenConn();
     $save = true;
     $id = $naziv = $cijena = $kategorija = $slika = $opis = $kategorijaErr = $cijenaErr= $urediErr='';
+    $popust = NULL;
     if ($_SERVER["REQUEST_METHOD"] == "GET"){
+        
         $id = $_GET["id"];
+        
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $id = $_POST["id"];
+        if(!empty($_POST['popust'])){
+            $popust = $_POST['popust'];
+        }
         if(empty($_POST['naziv']) || empty($_POST['cijena'])
         || empty($_POST['kategorija']) || empty($_POST['slika'])
         || empty($_POST['opis'])){
-            $urediErr = 'Sve mora bit ispunjeno';
+            $urediErr = 'Sve mora bit ispunjeno osim popusta';
         }else {
             $naziv = test_input($_POST['naziv']);
             $cijena = test_input($_POST['cijena']);
@@ -33,7 +39,7 @@
             $conn->query($sql); 
             $sql = "UPDATE `artikl` SET `artikl_naziv` = '$naziv',
             `artikl_cijena` = '$cijena', `artikl_kategorija` = '$kategorija',
-            `slika` = '$slika', `opis` = '$opis'
+            `slika` = '$slika', `opis` = '$opis', `popust` = $popust
             WHERE `artikl`.`artikl_id` = '$id'";
             $conn->query($sql); 
             $sql = "SET FOREIGN_KEY_CHECKS=1";
@@ -85,6 +91,9 @@
                             Cijena:
                             <input type="text" name="cijena" value="<?php echo $row['artikl_cijena'];?>"> </input>
                             <?php echo $cijenaErr;?>
+                            <br> <br>
+                            Popust:
+                            <input type="text" name="popust" value="<?php echo $row['popust'];?>"> </input>
                             <br> <br>
                             Kategorija:
                             <input type="text" name="kategorija" value="<?php echo $row['artikl_kategorija'];?>"> </input>

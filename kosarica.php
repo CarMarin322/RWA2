@@ -1,8 +1,7 @@
 <?php
     session_start();  
-   
+    $postavljeno = 0;
     if(isset($_SESSION['kosarica'])) {          
-            
             if(isset($_GET['kol'])){
                 if($_GET['kol'] == '-'){
                     $_SESSION['numArt'][$_GET['n']] -= 1;
@@ -26,6 +25,17 @@
                 $_SESSION['num'] -= $_SESSION['numArt'][$_GET['izbaci']];
                 $_SESSION['numArt'][$_GET['izbaci']] = 0;
             }
+        for($i = 0; $i < count($_SESSION['numArt']); $i++){
+            if($_SESSION['numArt'][$i] > 0){
+                
+                $postavljeno = 1;
+            }
+        }
+    }
+    if($postavljeno == 0){
+        unset($_SESSION['kosarica']);
+        unset($_SESSION['num']);
+        unset($_SESSION['numArt']);
     }
 ?>
 <html>
@@ -73,17 +83,21 @@
 
                         $kosara = $_SESSION['kosarica'][$i];
                         if($_SESSION['numArt'][$i] == 0) continue;
-                        $sql = "SELECT artikl_id, artikl_naziv, artikl_cijena FROM `artikl`
+                        $sql = "SELECT * FROM `artikl`
                                 WHERE artikl_id = '$kosara' ";
                         $result = $conn->query($sql);
                         if($result && $result->num_rows > 0){
                             while($row = $result->fetch_assoc()){
-                                $ukupno += $row['artikl_cijena']*$_SESSION['numArt'][$i];
+                                $cijena = $row['artikl_cijena'];
+                                if($row["popust"] != NULL){
+                                    $cijena = $row["artikl_cijena"] * ($row["popust"] / 100);
+                                }
+                                $ukupno += $cijena*$_SESSION['numArt'][$i];
                             ?>
                             <tr>
                             <th><?php echo $row['artikl_naziv'];?></th>
                             <th></th>
-                            <th><?php echo $row['artikl_cijena']  . 'kn' ;?></th>
+                            <th><?php echo $cijena  . 'kn' ;?></th>
                             <th></th>
                             <th>
                             <input type="button" value="-" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=-&n=<?php echo $i;?>', '_self')">

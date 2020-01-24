@@ -5,8 +5,11 @@
     $save = true;
     $naziv = $cijena = $kategorija = $slika = $opis = '';
     $kategorijaErr = $cijenaErr = $dodajErr= '';
-    
+    $popust = NULL;
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(!empty($_POST['popust'])){
+            $popust = $_POST['popust'];
+        }
         if(empty($_POST['naziv']) || empty($_POST['cijena'])
         || empty($_POST['kategorija']) || empty($_POST['slika'])
         || empty($_POST['opis'])){
@@ -29,8 +32,8 @@
             if($save){
                 $sql = "SET FOREIGN_KEY_CHECKS=0";
                 $conn->query($sql);
-                $sql = "INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_cijena`, `artikl_kategorija`, `slika`, `opis`)
-                VALUES ('', '$naziv', '$cijena', '$kategorija', '$slika', '$opis')";
+                $sql = "INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_cijena`, `artikl_kategorija`, `slika`, `opis`, `popust`)
+                VALUES ('', '$naziv', '$cijena', '$kategorija', '$slika', '$opis', '$popust')";
                 if ($conn->query($sql) === TRUE) {
                     $dodajErr = "Artikl je dodan u bazu";
                 } else {
@@ -61,7 +64,7 @@
         </div>
 
 
-        
+        <?php if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == "admin"){ ?>
         <div id="dodajArtikl">
             <h3>Dodavanje Artikala:</h3>
             <br>
@@ -72,6 +75,9 @@
             Cijena:
             <input type="text" name="cijena">
             <?php echo $cijenaErr;?>
+            <br> <br>
+            Popust:
+            <input type="text" name="popust">
             <br> <br>
             Kategorija:
             <input type="text" name="kategorija">
@@ -92,7 +98,13 @@
             <p> <?php echo $dodajErr;?></p>
         
         </div>
-
+        <?php
+        }else{
+            ?>
+            <p>Niste ovlašteni pristupiti ovoj stranici</p>
+            <?php
+        }
+                ?>
         
     </body>
 

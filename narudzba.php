@@ -17,7 +17,7 @@
         
         <div id="narudzba">
         <?php
-            if (!isset($_SESSION['korisnik'])){
+            if (!isset($_SESSION['korisnikId'])){
                 ?>
                    <p>Morate se prijaviti kako bi mogli naruciti</p> 
                    <a href="prijava.php">Prijava</a>
@@ -60,17 +60,21 @@
 
                     $kosara = $_SESSION['kosarica'][$i];
                     if($_SESSION['numArt'][$i] == 0) continue;
-                    $sql = "SELECT artikl_id, artikl_naziv, artikl_cijena FROM `artikl`
+                    $sql = "SELECT * FROM `artikl`
                             WHERE artikl_id = '$kosara' ";
                     $result = $conn->query($sql);
                     if($result && $result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
-                            $ukupno += $row['artikl_cijena']*$_SESSION['numArt'][$i];
+                            $cijena = $row['artikl_cijena'];
+                            if($row["popust"] != NULL){
+                                $cijena = $row["artikl_cijena"] * ($row["popust"] / 100);
+                            }
+                            $ukupno += $cijena*$_SESSION['numArt'][$i];
                         ?>
                         <tr>
                         <th><?php echo $row['artikl_naziv'];?></th>
                         <th></th>
-                        <th><?php echo $row['artikl_cijena']  . 'kn' ;?></th>
+                        <th><?php echo $cijena  . 'kn' ;?></th>
                         <th></th>
                         <th>
                         Količina:

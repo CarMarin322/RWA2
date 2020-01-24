@@ -32,12 +32,12 @@
                     
                     if($match){
                         $err = "Prijava uspješna";
-                        
-                        unset($_SESSION['korisnik']);
+                        unset($_SESSION['korisnikId']);
+                        $_SESSION['korisnik'] = "admin";
                         unset($_SESSION['num']);
                         unset($_SESSION['numArt']);
                         unset($_SESSION['kosarica']);
-                        $_SESSION["prij/odj"] = "Prijava";
+                        $_SESSION["prij/odj"] = "Odjava";
                         header("Location: http://localhost/dashboard/RWA/adminPregled.php");
                         
                     } 
