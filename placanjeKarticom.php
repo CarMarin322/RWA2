@@ -12,6 +12,7 @@
             $korisnikId = $_SESSION['korisnikId'];
             $placanje = $_POST['placanje'];
             $datum = date("Y-m-d");
+            $ukupno = $_SESSION['ukupno'];
             $err = false;
             $brojKartice = test_input($_POST["brojKartice"]);
             if(is_numeric($brojKartice) == false && $brojKartice != ""){
@@ -33,14 +34,12 @@
                 $sql = "SET FOREIGN_KEY_CHECKS=0";
                 
                 $conn->query($sql); 
-                $sql = "INSERT INTO `narudzba` ( `kupac_id`, `status`, `datum`, `dostava`, `napomena`, `placanje`)
-                VALUES ('$korisnikId', 'naruceno', '$datum', '$dostava', '$napomena', '$placanje')";
+                $sql = "INSERT INTO `narudzba` ( `kupac_id`, `status`, `datum`, `dostava`, `napomena`, `placanje`, `ukupno`)
+                VALUES ('$korisnikId', 'naruceno', '$datum', '$dostava', '$napomena', '$placanje', '$ukupno')";
                 if($conn->query($sql)){
                     $sql = "INSERT INTO `kartica` (`broj`, `istek`, `cvv`, `kupacId`)
                     VALUES ('$brojKartice', '$godinaIstek-$mjesecIstek', '$cvv', '$korisnikId')";
-                     if(!$conn->query($sql)){
-                        $err = true;
-                    }
+                    
                     $sql = "SELECT `narudzba_id` FROM `narudzba` ORDER BY `narudzba_id` DESC LIMIT 1";
                     $result = $conn->query($sql);
                     $row = $result->fetch_assoc();
@@ -70,8 +69,11 @@
                     unset($_SESSION['numArt']);
                     unset($_SESSION['kosarica']);
                     unset($_SESSION['dostava']);
+                    unset($_SESSION['ukupno']);
                     unset($_SESSION['napomena']);
                    header("Location: http://localhost/dashboard/RWA/zavrsetakNarudzbe.php");
+                }else{
+                    echo "Error: " . $sql . "<br>" . $conn->error;
                 }
             }
         }

@@ -93,6 +93,7 @@
                                     $cijena = $row["artikl_cijena"] * (1 -($row["popust"] / 100));
                                 }
                                 $ukupno += $cijena*$_SESSION['numArt'][$i];
+                                $_SESSION['ukupno'] = $ukupno;
                             ?>
                             <tr>
                             <th><?php echo $row['artikl_naziv'];?></th>

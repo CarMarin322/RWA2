@@ -6,6 +6,7 @@
         $napomena = $_SESSION['napomena'];
         $korisnikId = $_SESSION['korisnikId'];
         $placanje = $_POST['placanje'];
+        $ukupno = $_SESSION['ukupno'];
         $datum = date("Y-m-d");
         $err = false;
 
@@ -14,8 +15,8 @@
         $sql = "SET FOREIGN_KEY_CHECKS=0";
         
         $conn->query($sql); 
-        $sql = "INSERT INTO `narudzba` ( `kupac_id`, `status`, `datum`, `dostava`, `napomena`, `placanje`)
-        VALUES ('$korisnikId', 'naruceno', '$datum', '$dostava', '$napomena', '$placanje')";
+        $sql = "INSERT INTO `narudzba` ( `kupac_id`, `status`, `datum`, `dostava`, `napomena`, `placanje`, `ukupno`)
+        VALUES ('$korisnikId', 'naruceno', '$datum', '$dostava', '$napomena', '$placanje', '$ukupno')";
         if($conn->query($sql)){
             $sql = "SELECT `narudzba_id` FROM `narudzba` ORDER BY `narudzba_id` DESC LIMIT 1";
             $result = $conn->query($sql);
@@ -47,6 +48,7 @@
             unset($_SESSION['kosarica']);
             unset($_SESSION['dostava']);
             unset($_SESSION['napomena']);
+            unset($_SESSION['ukupno']);
             header("Location: http://localhost/dashboard/RWA/zavrsetakNarudzbe.php");
         }
       
