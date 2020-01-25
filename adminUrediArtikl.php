@@ -102,6 +102,8 @@
                             Slika:
                             <input type="text" name="slika" value="<?php echo $row['slika'];?>"> </input>
                             <br> <br>
+                            <img src="<?php echo $row["slika"]; ?>"> 
+                            <br> <br>
                             Opis:
                             <input type="text" name="opis" value="<?php echo $row['opis'];?>"> </input>
                             <br> <br>

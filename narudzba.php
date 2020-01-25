@@ -67,7 +67,7 @@
                         while($row = $result->fetch_assoc()){
                             $cijena = $row['artikl_cijena'];
                             if($row["popust"] != NULL){
-                                $cijena = $row["artikl_cijena"] * ($row["popust"] / 100);
+                                $cijena = $row["artikl_cijena"] * (1 -($row["popust"] / 100));
                             }
                             $ukupno += $cijena*$_SESSION['numArt'][$i];
                         ?>

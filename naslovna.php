@@ -70,7 +70,7 @@
 						<a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"><img src="<?php echo $row["slika"]; ?>" alt="">  </a><br>
 						<a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"> <b>Naziv: </b> <span><?php echo $row["artikl_naziv"]; ?> </span></a> <br> 
 						<?php
-							$novaCijena = $row["artikl_cijena"] * ($row["popust"] / 100);
+							$novaCijena = $row["artikl_cijena"] * (1 -($row["popust"] / 100));
 						?>
 						<b>Cijena: </b> <strike><?php echo $row["artikl_cijena"]; ?> kn</strike> <br> <span><?php echo $novaCijena; ?> kn</span>
 						<br>

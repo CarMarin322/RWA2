@@ -67,7 +67,7 @@
                             }
                         }
                     } 
-                    if($_GET['catName'] == "Prijenosna racunala") $catid = 1;  
+                    if($_GET['catName'] == "Prijenosna računala") $catid = 1;  
                     
                     if($page == 1){
                         $sql = "SELECT * FROM `artikl` WHERE `artikl_kategorija` = $catid
