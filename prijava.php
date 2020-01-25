@@ -60,6 +60,7 @@
                         $_SESSION['korisnik'] = $user;
                         $_SESSION['korisnikId'] = $userId;
                         $_SESSION["prij/odj"] = "Odjava";
+                        header("Location: http://localhost/dashboard/RWA/naslovna.php");
                     } 
                     else $err = "Prijava neuspjesna";
                 }
@@ -105,6 +106,8 @@
                     <input type="submit" value="PRIJAVI SE!"> <br> <br>
                     <span class="error"><?php echo $err;?></span>
                     </form>
+                    
+                    <a href="admin.php"><h6>Admin prijava</h6></a>
                 <?php
                 }
             ?>
