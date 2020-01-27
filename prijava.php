@@ -80,14 +80,15 @@
         </div>
 
        
-
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
+        <div class="row">
         
-        <div id="form">
-            <b>PRIJAVA:</b> <br> <br> <br>
-            <div class="alignleft">
+
+
+
+        <div class="form2">
+            
+
+
                <b>POSTOJEĆI KORISNIK: </b> <br> <br> 
                <?php 
                 if (isset($_SESSION['korisnik'])){
@@ -95,32 +96,36 @@
                     echo 'Dobrodošao/la ' . $_SESSION["korisnik"];
                 ?>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    <br> <br><input type="submit" name="odjava" value="ODJAVI  SE!"> <br>
+                    <br> <br><input class="Button2" type="submit" name="odjava" value="ODJAVI  SE!"> <br>
                     </form>
                 <?php
                 }else{
                 ?>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    Elektronska pošta: <input type="email" name="email"> <br> <span class="error"><?php echo $email_err;?></span> <br> <br>
-                    Lozinka: <input type="password" name="lozinka"><br><br>
-                    <input type="submit" value="PRIJAVI SE!"> <br> <br>
+                    Elektronska pošta:<br> <input type="email" name="email" class="ftekst"> <br> <span class="error"><?php echo $email_err;?></span> <br>
+                    Lozinka:<br> <input type="password" name="lozinka" class="ftekst" ><br><br>
+                    <input type="submit" class="Button2" value="PRIJAVI SE!"> <br> <br>
                     <span class="error"><?php echo $err;?></span>
                     </form>
                     
-                    <a href="admin.php"><h6>Admin prijava</h6></a>
+
+                
+                
+            
+            
+                <b>NOVI KORISNIK:</b> <br>  <br>
+                <button class="Button2"  onclick="window.open('http://localhost/dashboard/RWA/registracija.php', '_self')"> REGISTRIRAJ SE! </button>
+                <br> <br>
+                <a href="admin.php"><h6>Admin prijava</h6></a>
                 <?php
                 }
             ?>
-                
-                
-            </div>
-            <div class="alignright">
-                <b>NOVI KORISNIK:</b> <br> <br> <br>
-                <input type="button" value="REGISTRIRAJ SE!" onclick="window.open('http://localhost/dashboard/RWA/registracija.php', '_self')">
-            </div>
+           
           
         </div>
 
+
+            </div>
         <script>
            
         </script>

@@ -67,9 +67,9 @@
             <?php include 'templates/menu.php';?>
         </div>
 
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
+        <div class="row">
+
+
         
         <div id="promjenaPodataka">
            <?php
@@ -85,34 +85,34 @@
                       <form action="adminUrediArtikl.php" method="POST">
                           <h3>Izmjena podataka za artikl:</h3>
                             Naziv:
-                            <input type="text" name="id" value="<?php echo $row['artikl_id'];?>" hidden>
-                            <input type="text" name="naziv" value="<?php echo $row['artikl_naziv'];?>"> </input>
+                            <input type="text" class="ftekst" name="id" value="<?php echo $row['artikl_id'];?>" hidden>
+                            <input type="text"class="ftekst"  name="naziv" value="<?php echo $row['artikl_naziv'];?>"> </input>
                             <br> <br>
                             Cijena:
-                            <input type="text" name="cijena" value="<?php echo $row['artikl_cijena'];?>"> </input>
+                            <input type="text" class="ftekst" name="cijena" value="<?php echo $row['artikl_cijena'];?>"> </input>
                             <?php echo $cijenaErr;?>
                             <br> <br>
                             Popust:
-                            <input type="text" name="popust" value="<?php echo $row['popust'];?>"> </input>
+                            <input type="text" class="ftekst" name="popust" value="<?php echo $row['popust'];?>"> </input>
                             <br> <br>
                             Kategorija:
-                            <input type="text" name="kategorija" value="<?php echo $row['artikl_kategorija'];?>"> </input>
+                            <input type="text" class="ftekst" name="kategorija" value="<?php echo $row['artikl_kategorija'];?>"> </input>
                             <?php echo $kategorijaErr;?>
                             <br> <br>
                             Slika:
-                            <input type="text" name="slika" value="<?php echo $row['slika'];?>"> </input>
+                            <input type="text" class="ftekst" name="slika" value="<?php echo $row['slika'];?>"> </input>
                             <br> <br>
-                            <img src="<?php echo $row["slika"]; ?>"> 
+                            <img class="imageuredi" src="<?php echo $row["slika"]; ?>"> 
                             <br> <br>
-                            Opis:
-                            <input type="text" name="opis" value="<?php echo $row['opis'];?>"> </input>
+                            Opis:<br>
+                            <textarea name="opis" cols="60" rows="15" value="<?php echo $row['opis'];?>"> </textarea>
                             <br> <br>
                             
-                           <input type="submit" value="Promijeni Podatke">
+                           <input type="submit" class="Button2" value="Promijeni">
                       </form>
                       <p><?php echo $urediErr;?></p>
                       <br>
-                      <a href="adminPregled.php">Povratak na pregled artikala</a>
+                      <button class="Button2"><a href="adminPregled.php">Povratak na pregled artikala</a></button>
                        <?php
                        
                    
@@ -125,7 +125,11 @@
            ?>
         </div>
 
-        
+        <div id="trazilica">
+			<?php include 'templates/trazilicaIPoruka.php'?>
+        </div>
+
+        </div>
     </body>
 
 

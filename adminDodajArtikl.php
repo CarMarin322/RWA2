@@ -63,40 +63,44 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+        <div class="row">
 
         <?php if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == "admin"){ ?>
+
         <div id="dodajArtikl">
             <h3>Dodavanje Artikala:</h3>
             <br>
             <form action="adminDodajArtikl.php" method ="POST">
             Naziv:
-            <input type="text" name="naziv">
+            <input type="text" class="ftekst" name="naziv">
             <br> <br>
             Cijena:
-            <input type="text" name="cijena">
+            <input type="text" class="ftekst" name="cijena">
             <?php echo $cijenaErr;?>
             <br> <br>
             Popust:
-            <input type="text" name="popust">
+            <input type="text" class="ftekst" name="popust">
             <br> <br>
             Kategorija:
-            <input type="text" name="kategorija">
+            <input type="text" class="ftekst" name="kategorija">
             <?php echo $kategorijaErr;?>
             <br> <br>
             Slika:
-            <input type="text" name="slika">
+            <input type="text" class="ftekst" name="slika">
             <br> <br>
             Opis:
             <br>
             <textarea name="opis" cols="60" rows="30"></textarea>
             <br> <br>
-            <input type="submit" value="Dodaj">
+            <input type="submit" class="Button2" value="Dodaj">
             </form>
             <br>
-            <a href="adminPregled.php">Povratak na pregled artikala</a>
+            <button class="Button2"><a href="adminPregled.php">Povratak na pregled artikala</a></button>
             <br>
             <p> <?php echo $dodajErr;?></p>
         
+        </div>
+
         </div>
         <?php
         }else{

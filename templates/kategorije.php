@@ -5,7 +5,7 @@
     $result = $conn->query($sql);
     CloseCon($conn);
     if(!isset($_SESSION["artPerPageAdmin"])){
-        $_SESSION["artPerPage"] = 4;
+        $_SESSION["artPerPage"] = 6;
     }else{
         $_SESSION["artPerPage"] = $_SESSION["artPerPageAdmin"];
     }
@@ -14,7 +14,7 @@
 
 <html>
     <head>
-
+    <link rel="stylesheet" type="text/css" href="stil.css">
     </head>
     <body>
         
@@ -25,7 +25,7 @@
                     while($row = $result->fetch_assoc()){
             ?>
 
-            <a href="prikaziKategoriju.php?catName=<?php echo $row['kategorija_ime']; ?>&page=1"> <li><button><?php echo $row['kategorija_ime']; ?> </button></li></a>  
+            <a href="prikaziKategoriju.php?catName=<?php echo $row['kategorija_ime']; ?>&page=1"> <li><button class = "myButton"><?php echo $row['kategorija_ime']; ?> </button></li></a>  
 
             <?php
                     }

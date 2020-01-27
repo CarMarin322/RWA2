@@ -11,18 +11,21 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+<div class="row">
+
         <div id="kategorije" >		
 			<?php include 'templates/kategorije.php'?>
         </div>
 
+        
+        
+        <div id="Zavrsetak">
+           Uspješno ste izvršili narudžbu! <br> :)
+        </div>
         <div id="trazilica">
 			<?php include 'templates/trazilicaIPoruka.php'?>
         </div>
-        
-        <div id="Zavrsetak">
-           Uspješno ste izvršili narudžbu
-        </div>
-
+</div>
         
     </body>
 

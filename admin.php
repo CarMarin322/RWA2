@@ -63,26 +63,27 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+        <div class="row">
 
         
         <div id="adminPrijava">
            <form action="admin.php" method="POST">
                <h3>Admin prijava:</h3> <br>
                Korisničko ime:
-               <input type="text" name = "user">
+               <input type="text" class="ftekst"  name = "user">
                <br> <br>
                Lozinka:
-               <input type="password" name = "password">
+               <input type="password"  class="ftekst" name = "password">
                <br>
                <br>
-               <input type="submit" value="Prijavi se">
+               <input type="submit" class="Button2" value="Prijavi se">
            </form>
            <?php
            echo $err;
            ?>
         </div>
 
-        
+        </div>
     </body>
 
 

@@ -38,14 +38,12 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+        <div class="row">
+
         <div id="kategorije" >		
 			<?php include 'templates/kategorije.php'?>
         </div>
 
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
-        
         <div id="prikazArtikl">
         <?php 
             $id = $_GET['artId'];
@@ -57,13 +55,15 @@
 
             
         ?>
-            <img src="<?php echo $row["slika"]; ?>" alt=""> <br>
+        <div id="artiklprikaz">
+            <img  class="imageprikaz" src="<?php echo $row["slika"]; ?>" alt="" > <br>
             <b>Naziv: </b> <span><?php echo $row["artikl_naziv"]; ?> </span> <br> 
-            <b>Cijena: </b> <span><?php echo $row["artikl_cijena"]; ?> kn</span> <br>
-            <b>Specifikacije: </b> <br> </b> <span><?php echo $row["opis"]; ?></span>
-            <br> <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>&cart=<?php echo $row["artikl_id"]?>"><button>Spremi u košaricu</button></a>
-         
-
+            <b>Cijena: </b> <span><?php echo $row["artikl_cijena"]; ?> kn</span> <br><br>
+            <b>Specifikacije: </b> <br><br> </b> <span><?php echo $row["opis"]; ?></span>
+            <br><br>
+                <br> <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>&cart=<?php echo $row["artikl_id"]?>"><button class="Button2">Spremi u košaricu</button></a></div>
+                
+                           
         <?php
             }
         } 
@@ -74,7 +74,11 @@
            
         </div>
 
-        
+        <div id="trazilica">
+			<?php include 'templates/trazilicaIPoruka.php'?>
+        </div>
+
+    </div>
     </body>
 
 

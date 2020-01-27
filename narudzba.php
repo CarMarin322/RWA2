@@ -11,9 +11,9 @@
             <?php include 'templates/menu.php';?>
         </div>
 
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
+        <div class="row">
+
+
         
         <div id="narudzba">
         <?php
@@ -42,7 +42,7 @@
                                 <p><?php echo $row["zemlja"];?></p>
                                 <p><?php echo $row["telefon"];?></p>
                                <form action="promijeniPodatke.php" method="GET">
-                                    <input type="submit" value="Promijeni Podatke">
+                                    <input type="submit" class="Button2" value="Promijeni">
                                </form>
                                 <?php
                                 
@@ -53,7 +53,7 @@
 
                 ?>
                 <h2>Narudžba:</h2>
-                <table border=0>
+                <table id="narudzbatabela" border=0>
                 <?php
                 $ukupno = 0;
                 for($i = 0; $i < count($_SESSION['kosarica']); $i++){
@@ -72,9 +72,9 @@
                             $ukupno += $cijena*$_SESSION['numArt'][$i];
                         ?>
                         <tr>
-                        <th><?php echo $row['artikl_naziv'];?></th>
+                        <th><?php echo $row['artikl_naziv'] . ' Cijena:';?></th>
                         <th></th>
-                        <th><?php echo $cijena  . 'kn' ;?></th>
+                        <th><?php echo $cijena  . 'kn ' ;?></th>
                         <th></th>
                         <th>
                         Količina:
@@ -100,13 +100,17 @@
                     <br><input type="radio" name="dostavljanje" value="osobno"> Osobno preuzimanje </input>
                    <br><br> Napomena: <br>
                     <textarea  name="napomena" form="dostavaForm"></textarea>
-                  <br> <br> <br><input type="submit" value="Nastavi na odabir placanja">
+                  <br> <br> <br><input type="submit" class="Button2" value="Nastavi">
                     </form>
                     
                 <?php
             }
            
         ?>
+        </div>
+        <div id="trazilica">
+			<?php include 'templates/trazilicaIPoruka.php'?>
+        </div>
         </div>
 
         

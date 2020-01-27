@@ -186,22 +186,20 @@
             <?php include 'templates/menu.php';?>
         </div>
         
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
+        <div class="row">
         
-        <div id="form" >
+        <div id="registracija">
             <b>REGISTRACIJA:</b> <br> <br> <br>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                <b>Osobni podaci:</b> <br><br>
-                *Ime:  <input type="text" name="ime">
+                *Ime:  <input type="text" class="ftekst"  name="ime"><br>
                 <span class="error"><?php echo $ime_err;?></span><br>
-                *Prezime:  <input type="text" name="prezime">
+                *Prezime:  <input type="text"  class="ftekst"   name="prezime"><br>
                 <span class="error"><?php echo $prezime_err;?></span><br>
                 
-                *Rod: 
-                <input type="radio" name="rod" value="muski"> Muški
-                <input type="radio" name="rod" value="zenski"> Ženski
+                *Rod: <br>
+                <input type="radio" name="rod" value="muski"> Muški<br>
+                <input type="radio" name="rod" value="zenski"> Ženski<br>
                 <span class="error"><?php echo $rod_err;?></span>
                 <br>
                 Datum rođenja:
@@ -347,32 +345,34 @@
 
                 </select>
                 <span class="error"><?php echo $datum_err;?></span>
-                <br>
-               *email: <input type="email" name="email">
+                <br><br>
+               *email:<input type="email" class="ftekst"  name="email"><br>
                <span class="error"><?php echo $email_err;?></span><br> <br>
-                <b> Adresa: </b><br> <br>
-                *Ulica: <input type="text" name="ulica"><br>
+                <b><u> Adresa:</u> </b><br> 
+                <br>
+               
+                *Ulica: <input type="text" class="ftekst" name="ulica"><br>
                 <span class="error"><?php echo $ulica_err;?></span> <br>
-                *Poštanski broj: <input type="text" name="pobr">
+                *Poštanski broj: <input type="text" class="ftekst" name="pobr">
                 <span class="error"><?php echo $pobr_err;?></span><br>
-                *Grad: <input type="text" name="grad">
+                 *Grad: <input type="text"  class="ftekst" name="grad">
                 <span class="error"><?php echo $grad_err;?></span><br>
-                *Zemlja: <input type="text" name="zemlja">
+                *Zemlja: <input type="text"  class="ftekst" name="zemlja">
                 <span class="error"><?php echo $zemlja_err;?></span><br><br>
                  <b>Kontakt:</b>  <br><br>
-                Telefon: <input type="text" name="telefon">
+                Telefon:<input type="text"  class="ftekst" name="telefon">
                 <span class="error"><?php echo $telefon_err;?></span><br> <br> <br>
-                *Lozinka: <input type="password" name="lozinka">
+                *Lozinka: <input type="password"   class="ftekst"  name="lozinka">
                 <span class="error"><?php echo $lozinka_err;?></span><br>
-                *Ponovi lozinku: <input type="password" name="provjera_lozinke">
+                *Ponovi lozinku: <input type="password" class="ftekst"  name="provjera_lozinke">
                 <span class="error"><?php echo $provjera_err;?></span><br> <br>
-                <input type="submit" value="Registriraj se!">
+                <input type="submit" class="Button2" value="Registriraj se!">
             </form>
 
       
         </div>
 
-        
+    </div>
         
     </body>
 

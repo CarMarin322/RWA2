@@ -48,11 +48,8 @@
             <?php include 'templates/menu.php';?>
         </div>
 
-       
 
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
+        <div class="row">
         
         <div id="kosarica">
         <?php
@@ -101,11 +98,11 @@
                             <th><?php echo $cijena  . 'kn' ;?></th>
                             <th></th>
                             <th>
-                            <input type="button" value="-" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=-&n=<?php echo $i;?>', '_self')">
+                            <input type="button" class="Button2" value="-" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=-&n=<?php echo $i;?>', '_self')">
                            <?php echo $_SESSION['numArt'][$i];?> 
-                           <input type="button" value="+" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=plus&n=<?php echo $i;?>', '_self')">
+                           <input type="button" class="Button2" value="+" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=plus&n=<?php echo $i;?>', '_self')">
                             </th>
-                            <th><input type="button" value="Izbaci" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?izbaci=<?php echo $i;?>', '_self')">
+                            <th><input type="button" class="Button2" value="Izbaci" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?izbaci=<?php echo $i;?>', '_self')">
                             </th>
                             
                             </tr>
@@ -128,23 +125,27 @@
            <br>
            <br>
            <form action="naslovna.php" method="post">
-                <button type="submit">Povratak na pregled ponude</button>
+                <button class="Button3" type="submit">Povratak na pregled ponude</button>
            </form>
            <form  action="narudzba.php" method="post">
-                <button type="submit">Nastavak na odabir dostave</button>
+                <button class="Button3" type="submit">Nastavak na odabir dostave</button>
            </form>
            <?php
             }else{
         
                 ?>
                <p> Kosarica je prazna</p>  <br>
-                <a href="naslovna.php">Povratak na pregled ponude</a>
+                <a class="Button2" href="naslovna.php">Povratak na pregled ponude</a>
                 <?php
             }
            ?>
         </div>
 
-        
+        <div id="trazilica">
+			<?php include 'templates/trazilicaIPoruka.php'?>
+        </div>
+
+        </div>
     </body>
 
 

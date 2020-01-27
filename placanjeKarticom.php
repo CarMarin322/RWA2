@@ -99,10 +99,8 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+    <div class="row">
 
-        <div id="trazilica" >
-			<?php include 'templates/trazilicaIPoruka.php';?>
-        </div>
         
         <div id="placanje">
           <form action="placanjeKarticom.php" method = "POST">
@@ -115,7 +113,7 @@
                 
 <h3>Podaci o kartici:</h3> <br> 
 *Broj kreditne/debitne kartice: 
-<input type="text" name="brojKartice" placeholder="Upišite broj kartice"> </input> <?php echo $brojErr;?>
+<input type="text" class="ftekst" name="brojKartice" placeholder="Upišite broj kartice"> </input> <?php echo $brojErr;?>
 <br> <br>
 *Datum isteka kartice:
 <select name="mjesecIstek">
@@ -159,7 +157,7 @@
 </select>
 <br> <br>
 *CVV kod:
-<input type="text" name="cvv" placeholder="xxxx"></input> <?php echo $cvvErr;?>
+<input type="text" class="ftekst" name="cvv" placeholder="xxxx"></input> <?php echo $cvvErr;?>
 <br>
 <?php echo $error;?>
 <h3>Podaci o vlasniku kartice: </h3> 
@@ -197,12 +195,14 @@ if($result && $result->num_rows > 0){
 closeCon($conn);
 ?>
 
-<input type="submit" value = "Plati i završi narudžbu"></input>
+<input type="submit" class="Button3" value = "Plati i završi narudžbu"></input>
             </p>
           </form>
         </div>
-
-     
+        <div id="trazilica" >
+			<?php include 'templates/trazilicaIPoruka.php';?>
+        </div>
+</div>
     </body>
 
 

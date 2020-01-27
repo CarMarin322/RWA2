@@ -32,18 +32,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="stil.css">
 	
-		<style>
 
-			#naslovna{
-				float: left;  
-				width: 60%;
-			}
-
-			.alignleft {
-				float: left;
-			}
-
-		</style>
 
 	</head>
 
@@ -52,10 +41,14 @@
 			<?php
 			include 'templates/menu.php';?>
 		</div>
-		
-		<div id="kategorije" >		
+
+		<div class="row">
+
+		<div id="kategorije">		
 			<?php include 'templates/kategorije.php'?>
 		</div>
+
+		
 
 		<div id="naslovna">
 			<?php
@@ -67,16 +60,20 @@
                     while($row = $result->fetch_assoc()){
 						?>
 						<div id="artikl">
-						<a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"><img src="<?php echo $row["slika"]; ?>" alt="">  </a><br>
+						<a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"><img class="image" src="<?php echo $row["slika"]; ?>" alt="">  </a><br>
 						<a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"> <b>Naziv: </b> <span><?php echo $row["artikl_naziv"]; ?> </span></a> <br> 
 						<?php
 							$novaCijena = $row["artikl_cijena"] * (1 -($row["popust"] / 100));
 						?>
 						<b>Cijena: </b> <strike><?php echo $row["artikl_cijena"]; ?> kn</strike> <br> <span><?php echo $novaCijena; ?> kn</span>
 						<br>
-						<b>Popust: <?php echo $row["popust"]; ?> %</b>
+						<span style="color:tomato;"><b>Popust: <?php echo $row["popust"]; ?> %</b></span>
+						<div class="overlay">
+    <div class="text">
 						<br> <a href="naslovna.php?cart=<?php echo $row["artikl_id"]?>">
-						<button>Spremi u košaricu</button></a>
+						<button class="myButton">Spremi u košaricu</button></a>
+					</div>
+					</div>
 						</div>
 						
 		
@@ -89,10 +86,19 @@
                         
               
 		</div>
-
 		<div id="trazilica">
 			<?php include 'templates/trazilicaIPoruka.php'?>
 		</div>
+
+						</div>					
+						<div id="brstr">
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+        </div>
 		
 	</body>
 </html>

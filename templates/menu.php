@@ -1,16 +1,26 @@
 <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="stil.css">
 
+<style>
+  body {
+    
+    
+
+}
+
+</style>
     </head>
-    <body>
-    <a href="naslovna.php"><img src="slike/TempLogo.png" width="150" height="150" align="center"> </a>
+    <a  href="naslovna.php"><img class="kosara" src="slike/logo1.png" width="150" height="150" > </a>
 
         
             <?php 
+            $korisnik = "";
+            $profil = "";
                 if (isset($_SESSION['korisnik'])){
-                    echo $_SESSION['korisnik'];
+                    $korisnik = $_SESSION['korisnik'];
                     if($_SESSION['korisnik'] != 'admin'){
-                    echo '<a href="profil.php">Moj profil</a>';
+                        $profil = "Moj profil";
                     }
                 }
 
@@ -22,15 +32,16 @@
                     $_SESSION['prij/odj'] = "Prijava";
                 }
             ?>
-        <p class="alignright"> <?php if (isset($_SESSION['num'])){
+        <span><?php echo $korisnik;?></span>
+        <a  href="profil.php"><button class="Button2"> <?php echo $profil;?> </button></a>
+        <p class="textformat"> <?php if (isset($_SESSION['num'])){
                     echo $_SESSION['num'];
                 } ?> </p>
-        <a class="alignright" href="kosarica.php"> <img src="slike/shopping_cart.png" width="20" height="20"> </a>
+        <a class="alignright" href="kosarica.php"> <img class="kosara" src="slike/kart4.png" width="65" height="55"> </a>
         
-        <a class="alignright" href="registracija.php"> Registracija</a>
-        <a class="alignright" href="prijava.php"> <?php echo $_SESSION["prij/odj"];?> </a>
-        <a class="alignright" href="informacije.php"> Informacije </a>
-    </body>
+        <a class="alignright" href="registracija.php"><button class="myButton"> Registracija</button></a>
+        <a class="alignright" href="prijava.php"><button class="myButton"> <?php echo $_SESSION["prij/odj"];?> </button></a>
+        <a class="alignright" href="informacije.php"><button class="myButton"> Informacije </button></a>
 </html>
 
 

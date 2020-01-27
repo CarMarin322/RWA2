@@ -42,13 +42,13 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+        <div class="row">
+
         <div id="kategorije" >		
 		<?php include 'templates/kategorije.php'?>
         </div>
 
-        <div id="trazilica">
-		<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
+
         
         <div id="prikazKategorija">
                 <?php
@@ -83,13 +83,19 @@
                         while($row = $result->fetch_assoc()){
                            
                 ?>
+
                 <div id="artikl">
-                <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"><img src="<?php echo $row["slika"]; ?>" alt="">  </a><br>
-                <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"> <b>Naziv: </b> <span><?php echo $row["artikl_naziv"]; ?> </span></a> <br> 
+                
+                <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"><img class="image" src="<?php echo $row["slika"]; ?>" alt="">  </a><br>
+                <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>">  <span><?php echo $row["artikl_naziv"]; ?> </span></a> <br> 
                 <b>Cijena: </b> <span><?php echo $row["artikl_cijena"]; ?> kn</span> <br>
+                <div class="overlay">
+    <div class="text">
                 <br> <a href="prikaziKategoriju.php?page=<?php echo $page; ?>&catName=<?php echo $_GET['catName']; ?>&cart=<?php echo $row["artikl_id"]?>">
-                <button>Spremi u košaricu</button></a>
+                <button class="myButton">Spremi u košaricu</button></a></div>
+  </div>
                 </div>
+                
                 
 
                 <?php
@@ -99,8 +105,12 @@
                    
                 ?>
         </div>
+        <div id="trazilica">
+		<?php include 'templates/trazilicaIPoruka.php'?>
+        </div>
+                </div>
         
-        <div>
+        <div id="brstr">
         <br> <br> <br>
             <?php
              $sql = "SELECT COUNT(*) AS broj FROM `artikl` WHERE `artikl_kategorija` = $catid";

@@ -11,9 +11,8 @@
             <?php include 'templates/menu.php';?>
         </div>
 
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
+        <div class="row">
+
         
         <div id="Poruka">
         <?php
@@ -25,16 +24,16 @@
         <form class="form" action="poruka.php" method="post">
 
             Vaša e-mail adresa:<br>
-            <input type=text name=email size=30 value="<?php print($email); ?>"> <br>
+            <input type=text class="ftekst" name=email size=30 value="<?php print($email); ?>"> <br>
 
             Predmet:<br>
-            <input type=text name=subject size=30 value="<?php print($subject); ?>"><br>
+            <input type=text class="ftekst" name=subject size=30 value="<?php print($subject); ?>"><br>
 
             Poruka:<br>
             <textarea rows=10 cols=50 name=message><?php print($message); ?></textarea>
             <br>
 
-            <input type=submit value="Posalji E-mail">
+            <input type=submit class="Button2" value="Posalji E-mail">
         </form>
         <?php
         }
@@ -65,7 +64,11 @@
         ?>
         </div>
 
-        
+        <div id="trazilica">
+			<?php include 'templates/trazilicaIPoruka.php'?>
+        </div>
+
+    </div>
     </body>
 
 

@@ -130,23 +130,22 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+        <div class="row">
 
-        <div id="trazilica" >
-			<?php include 'templates/trazilicaIPoruka.php';?>
-        </div>
+
         
-        <div id="placanje">
+        <div id="placanje2">
           <form>
           <h3>Moj profil:</h3>
-          <input type="button" value="Narudžbe" onclick="window.open('http://localhost/dashboard/RWA/profilNarudzbe.php', '_self');">
-          <br> <br><input type="button" value="Podaci" onclick="window.open('http://localhost/dashboard/RWA/profilPodaci.php', '_self');">
+          <input type="button" class="Button2" value="Narudžbe" onclick="window.open('http://localhost/dashboard/RWA/profilNarudzbe.php', '_self');">
+          <br> <br><input type="button" class="Button2" value="Podaci" onclick="window.open('http://localhost/dashboard/RWA/profilPodaci.php', '_self');">
           <br><br>
             
             
           </form>
         </div>
 
-        <div><?php
+        <div id="preglednar"><?php
            
           
            $sql = "SELECT * FROM `kupac` ";
@@ -158,39 +157,39 @@
                       <form action="profilPodaci.php" method="POST">
                           <h3>Podaci:</h3>
                             Ime:
-                            <input type="text" name="ime" value="<?php echo $row['kupac_ime'];?>"> </input>
+                            <input type="text"  class="ftekst" name="ime" value="<?php echo $row['kupac_ime'];?>"> </input>
                             <?php echo $ime_err;?>
                             <br> <br>
                             Prezime:
-                            <input type="text" name="prezime" value="<?php echo $row['kupac_prezime'];?>"> </input>
+                            <input type="text"  class="ftekst" name="prezime" value="<?php echo $row['kupac_prezime'];?>"> </input>
                             <?php echo $prezime_err;?>
                             <br> <br>
                             
                             Email:
-                            <input type="text" name="email" value="<?php echo $row['kupac_mail'];?>"> </input>
+                            <input type="text"  class="ftekst" name="email" value="<?php echo $row['kupac_mail'];?>"> </input>
                             <?php echo $email_err;?>
                             <br> <br>
                             Ulica:
-                            <input type="text" name="ulica" value="<?php echo $row['ulica'];?>"> </input>
+                            <input type="text"  class="ftekst" name="ulica" value="<?php echo $row['ulica'];?>"> </input>
                             <?php echo $ulica_err;?>
                             <br> <br>
                             Poštanski broj:
-                            <input type="text" name="pobr" value="<?php echo $row['postanski'];?>"> </input>
+                            <input type="text"  class="ftekst" name="pobr" value="<?php echo $row['postanski'];?>"> </input>
                             <?php echo $pobr_err;?>
                             <br> <br>
                             Grad:
-                            <input type="text" name="grad" value="<?php echo $row['grad'];?>"> </input>
+                            <input type="text"  class="ftekst" name="grad" value="<?php echo $row['grad'];?>"> </input>
                             <?php echo $grad_err;?>
                             <br> <br>
                             Zemlja:
-                            <input type="text" name="zemlja" value="<?php echo $row['zemlja'];?>"> </input>
+                            <input type="text"  class="ftekst" name="zemlja" value="<?php echo $row['zemlja'];?>"> </input>
                             <?php echo $zemlja_err;?>
                             <br> <br>
                             Telefon:
-                            <input type="text" name="telefon" value="<?php echo $row['telefon'];?>"> </input>
+                            <input type="text"  class="ftekst" name="telefon" value="<?php echo $row['telefon'];?>"> </input>
                             <?php echo $telefon_err;?>
                             <br> <br>
-                           <input type="submit" value="Promijeni Podatke">
+                           <input type="submit" class="Button3" value="Promijeni Podatke">
                       </form>
                       
                        <?php
@@ -205,7 +204,11 @@
            ?>
         </div>
 
-     
+        <div id="trazilica" >
+			<?php include 'templates/trazilicaIPoruka.php';?>
+        </div>
+
+        </div>
     </body>
 
 

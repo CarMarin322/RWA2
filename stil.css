@@ -1,37 +1,217 @@
+
 #menu {
 
-	background-color: lightgray;
-	padding: 10px;		
+    background-color:rgba(0, 0, 0, 0.589);
+    padding: 15px;	
+    font: bold 40px/1 monospace;
+    color: aliceblue;
+}
+
+#informacije{
+
+    flex: 60%;
+    background-color: rgba(3, 3, 3, 0.548);
+    padding: 20px;
+    font: bold 25px/1 monospace;
+    color: rgb(119, 168, 233);
+ 
+
+}
+
+#narudzba{
+  flex: 80%;
+  background-color: rgba(255, 255, 255, 0.548);
+  padding: 20px;
+  font: bold 25px/1 monospace;
+}
+
+#placanje{
+  flex: 80%;
+  background-color: rgba(255, 255, 255, 0.548);
+  padding: 20px;
+  font: bold 25px/1 monospace;
+}
+
+#placanje2{
+  flex: 15%;
+  background-color: rgba(255, 255, 255, 0.548);
+  padding: 20px;
+  font: bold 25px/1 monospace;
+}
+
+#preglednar{
+  flex: 65%;
+  background-color: rgba(255, 255, 255, 0.548);
+  font: bold 25px/1 monospace;
+}
+
+#preglednarudzbatabela{
+  font: bold 15px/1 monospace;
+  background-color: rgba(95, 142, 243, 0.651);
+}
+
+#narudzbatabela{
+  font: bold 30px/1 monospace;
+  background-color: rgba(95, 142, 243, 0.651);
+}
+
+#promjenaPodataka{
+  flex: 80%;
+  background-color: rgba(255, 255, 255, 0.548);
+  font: bold 25px/1 monospace;
+}
+
+#registracija{
+  flex: 80%;
+  font: bold 25px/1 monospace;
+  background-color:rgba(2, 2, 2, 0.699);
+  color: rgb(73, 123, 170);
+  padding: 20px;
+
 }
 
 
-#kategorije{
-    float: left;  
-    width: 20%;
-    height: 1000%;
-    line-height: 1.9;
-    background-color: #f1f1f1;
+#zavrsetak{
+  flex: 60%;
+  background-color: rgba(255, 255, 255, 0.548);
+  color: rgb(50, 156, 85);
+  padding: 30px;
+  line-height: 1.5;
+  text-align: center;  
+  font: bold 40px/1 monospace;
+}
 
+#Poruka{
+
+  flex: 80%;
+  background-color: rgba(255, 255, 255, 0.548);
+  padding: 20px;
+  font: bold 25px/1 monospace;
+
+}
+
+#adminPrijava{
+  background-color:rgba(252, 252, 252, 0.534);
+  color: rgb(73, 123, 170);
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex: 60%;
+  
+  padding: 30px;
+  line-height: 1.5;
+  text-align: center;  
+  font: bold 40px/1 monospace;
+}
+
+#dodajartikl{
+  flex: 100%;
+  background-color: rgba(255, 255, 255, 0.548);
+  padding: 20px;
+  font: bold 25px/1 monospace;
+
+}
+
+#promjenaPodataka{
+  flex: 80%;
+  background-color: rgba(255, 255, 255, 0.548);
+  padding: 20px;
+  font: bold 25px/1 monospace;
+}
+
+body {
+    background-image: url(slike/Neutrino-2-Cell.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#kategorije{
+
+    background-color:rgba(0, 0, 0, 0.589);
+  
+    align-content: center;
+    flex: 20%; 
+    padding: 15px;
+    font: bold 40px/1 monospace;
+  color: rgb(48, 121, 184);
+
+}
+
+
+.row {
+
+display: flex;
+flex-wrap: nowrap;
+
+}
+
+#brstr{
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0);
+    font: bold 20px/1 monospace;
+    color: tomato;
+}
+
+#prikazArtikl{
+    flex: 60%;
+    padding: 20px;
+
+}
+
+#naslovna{
+    flex: 60%;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
 }
 
 
 #trazilica{
-    float: right; 
-    width: 20%;
-    height: 1000%;
-    
+    flex: 20%;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 20px;
+
 
 }
 
 #prikazKategorija{
-    float: left;
-    width: 60%;
+    
+    flex: 60%;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
+    flex-wrap: wrap;
+
 }
+
+#kosarica{
+  flex: 80%;
+  padding: 20px;
+  font: bold 30px/1 monospace;
+}
+
+#tablicakosarice {
+  font: bold 30px/1 monospace;
+  background-color: rgba(40, 72, 218, 0.548);
+}
+
+#AdminPregled{
+  flex: 100%;
+  padding: 20px;
+  font: bold 30px/1 monospace;
+  background-color: rgba(255, 255, 255, 0.548);
+}
+
+#admintabla {
+  font: bold 25px/1 monospace;
+  background-color: rgba(40, 72, 218, 0.548);
+}
+
 
 
 .alignright {
     
-	float: right;
+    float: right;
+
 }
 
 .alignleft {
@@ -39,22 +219,255 @@
     float: left;
 }
 
-#form {
+#spacer{
 
-    float: left;
-    padding: 30px;
-    line-height: 1.5;
-    text-align: left;  
-    width: 50%;
-    margin: auto;
+    flex: 10%;
+
 }
 
-#artikl {
-    border-style: groove; 
-    float: left;
+.form2 {
+
+    background-color:rgba(0, 0, 0, 0.637);
+    color: rgb(73, 123, 170);
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex: 60%;
+    
     padding: 30px;
     line-height: 1.5;
     text-align: center;  
-    width: 30%;
-    margin: auto;
+    font: bold 40px/1 monospace;
+    
+}
+
+
+
+.myButton {
+    display: flex;
+    width: 100%;
+    background-color:rgba(0, 132, 255, 0.568);
+    color: rgb(0, 0, 0);
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: right;
+    font-size: 15px;
+    font: monospace;
+    font: bold 20px/1 monospace;
+}
+.myButton:hover {
+    background-color:rgba(0, 0, 0, 0.322);
+    color: white;
+}
+
+.Button2 {
+    width: 200px;
+    background-color:rgba(0, 132, 255, 0.568);
+    color: rgb(0, 0, 0);
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    font: bold 20px/1 monospace;
+}
+.Button2:hover {
+    background-color:rgba(0, 0, 0, 0.322);
+    color: white;
+}
+
+
+.Button3 {
+  width: 400px;
+  background-color:rgba(0, 132, 255, 0.568);
+  color: rgb(0, 0, 0);
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+  font: bold 20px/1 monospace;
+}
+.Button3:hover {
+  background-color:rgba(0, 0, 0, 0.322);
+  color: white;
+}
+
+
+
+#artikl {
+    border-style: groove; 
+    border-width: 7px;
+    border-color: rgb(69, 196, 255);
+    background-color:rgba(255, 255, 255, 0.849);
+
+    position: relative;
+    width: 290px;
+    text-align: center; 
+    line-height: 1.5;
+    margin: 10px;
+    float: left;
+    font: bold 17px/1 monospace;
+    
+  }
+  
+
+  #artiklprikaz {
+    border-style: groove; 
+    border-width: 7px;
+    border-color: rgb(69, 196, 255);
+    background-color:rgba(255, 255, 255, 0.849);
+
+    position: relative;
+    width: 499px;
+    text-align: center; 
+    align-items: center;
+    line-height: 1.5;
+    margin: 10px;
+    float: left;
+    font: bold 17px/1 monospace;
+    
+  }
+
+  .imageprikaz{
+    display: block;
+    height: 400px;
+    width: 400px;
+    margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgb(51, 18, 241);
+  }
+
+  .image {
+      display: block;
+    height: 290px;
+    width: 290px;
+  }
+
+  .imageuredi {
+    display: block;
+    height: 400px;
+    width: 400px;
+  border: 1px solid rgb(51, 18, 241);
+}
+  
+  .textformat {
+    color: tomato;
+    font: bold 25px/1 monospace;
+    float: right;
+  }
+
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 133, 186, 0.658);
+    overflow: hidden;
+    width: 290px;
+    height: 0%;
+    transition: .5s ease;
+  }
+  
+  #artikl:hover .overlay {
+    height: 50%;
+  }
+
+ 
+
+  .text {
+    white-space: nowrap; 
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    overflow: hidden;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+  .trazilica {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  .trazilica:focus {
+    width: 100%;
+  }
+
+  .error{
+
+    color: crimson;
+  }
+
+  .ftekst {
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+
+  .ftekst:focus {
+    width: 300px;
+  }
+
+
+ 
+
+  li{
+    margin: 10px 0;
+  }
+
+  /* The animation code */
+@keyframes pop-in {
+    from {
+           
+          transform: scale(0.05, 0.05);
+          }
+  
+  
+    to {
+         transform: scale(1, 1);
+       }
+}
+
+
+.chat-icon img {
+    width: 100px;
+    height: 100px;
+   
+    animation-name: pop-in;
+    animation-duration: 3s;
+
+  animation-iteration-count: infinite;
+  
+}
+
+.mail:hover{
+  
+  opacity: 0.6;
+}
+
+.mail {
+  margin-top: 400px;
+  margin-left: 200px;
+  position: fixed;
+}
+
+
+.kosara:hover{
+
+  opacity: 0.6;
 }

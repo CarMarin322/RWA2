@@ -7,12 +7,14 @@
     <body>
         <form action="trazilicaPrikaz.php?page=1" method="GET">
             
-            <input type="text" name="trazilica"> <br> <br>
-            <button type="submit">Pretraži</button>
+            <input type="text" name="trazilica" class="trazilica" placeholder="Search.."> <br> <br>
+            <button type="submit" class = "myButton">Pretraži</button>
         </form>
         <br> <br> <br> <br>
             <a href="poruka.php">
-                <img  src="slike/porukaimg.png" alt="Pošalji poruku" height="60" width="60">
+            <figure class="chat-icon">
+  <img class ="mail"  src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/chat-2-icon.png" alt="A chat icon" >
+</figure>
             </a>'
     </body>
 </html>

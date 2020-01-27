@@ -15,10 +15,8 @@
             <?php include 'templates/menu.php';?>
         </div>
 
-
-        <div id="trazilica" >
-			<?php include 'templates/trazilicaIPoruka.php';?>
-        </div>
+        <div class="row">
+  
         
         <div id="placanje">
           <form>
@@ -30,7 +28,11 @@
             
           </form>
         </div>
-
+        
+        <div id="trazilica" >
+			<?php include 'templates/trazilicaIPoruka.php';?>
+        </div>
+</div>
      
     </body>
 

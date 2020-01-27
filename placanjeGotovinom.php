@@ -71,9 +71,7 @@
         </div>
 
 
-        <div id="trazilica" >
-			<?php include 'templates/trazilicaIPoruka.php';?>
-        </div>
+<div class="row">
         
         <div id="placanje">
         <form action="placanjeGotovinom.php" method="POST">
@@ -83,15 +81,17 @@
           <br><br>
             
             
-            <input type="submit" value="Završi narudžbu">
-            
-            
-   
-            
+            <input type="submit" class="Button2" value="Završi narudžbu">
+ 
             </form>
         </div>
 
-     
+        <div id="trazilica" >
+			<?php include 'templates/trazilicaIPoruka.php';?>
+        </div>
+
+</div>
+
     </body>
 
 

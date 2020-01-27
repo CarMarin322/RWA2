@@ -13,16 +13,15 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+<div class="row">
 
-        <div id="trazilica" >
-			<?php include 'templates/trazilicaIPoruka.php';?>
-        </div>
+
         
-        <div id="placanje">
+        <div id="placanje2">
           <form>
           <h3>Moj profil:</h3>
-          <input type="button" value="Narudžbe" onclick="window.open('http://localhost/dashboard/RWA/profilNarudzbe.php', '_self');">
-          <br> <br><input type="button" value="Podaci" onclick="window.open('http://localhost/dashboard/RWA/profilPodaci.php', '_self');">
+          <input type="button" class="Button2" value="Narudžbe" onclick="window.open('http://localhost/dashboard/RWA/profilNarudzbe.php', '_self');">
+          <br> <br><input type="button" class="Button2" value="Podaci" onclick="window.open('http://localhost/dashboard/RWA/profilPodaci.php', '_self');">
           <br><br>
             
             
@@ -30,9 +29,9 @@
 
         </div>
 
-        <div>
+        <div id="preglednar">
             <h3>Pregled dosadašnjih narudžbi:</h3>
-              <table border= 1>
+              <table id="preglednarudzbatabela" border= 1>
               <tr>
                   <th>Datum:</th>
                   <th>Broj narudžbe:</th>
@@ -59,7 +58,7 @@
                               
                               <form action="profilNarudzbeArtikli.php" method="GET">  
                                    <input type="text" name ="id" value="<?php echo $row["narudzba_id"]; ?>" hidden>    
-                                  <td><input type="submit"  value="Pogledaj narudžbu"></td>
+                                  <td><input class="myButton" type="submit"  value="Pogledaj narudžbu"></td>
                               </form>
                           </tr>
                           
@@ -68,9 +67,14 @@
                   }
                 }
             ?>
+            </table>
         </div>
 
-     
+        <div id="trazilica" >
+			<?php include 'templates/trazilicaIPoruka.php';?>
+        </div>
+
+            </div>
     </body>
 
 

@@ -9,7 +9,11 @@
     $pretrazi = '';
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["izbrisi"])){
         $id = $_POST["id"];
+        $sql = "SET FOREIGN_KEY_CHECKS=0";
+        $conn->query($sql);
         $sql = "DELETE FROM `artikl` WHERE `artikl`.`artikl_id` = $id";
+        $conn->query($sql);
+        $sql = "SET FOREIGN_KEY_CHECKS=1";
         $conn->query($sql);
     }
     else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["pretraga"])){
@@ -33,7 +37,10 @@
             <?php include 'templates/menu.php';?>
         </div>
 
+        <div class="row">
+
         <?php if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == "admin"){ ?>
+
         <div id="AdminPregled">
         <h3>Pregled artikala: </h3> <br>
         <form action="adminPregled.php" method="GET">
@@ -75,17 +82,18 @@
                     <option value="30">30</option>
                     <option value="31">31</option>
                 </select>
-            <input type="submit" value="Spremi odabir">
+        
+            <input type="submit" class="Button2" value="Spremi odabir">
         </form>
         <form action="adminDodajArtikl.php" method="GET">
-            <input type="submit" value="Dodaj artikal">
+            <input type="submit" class="Button2" value="Dodaj artikal">
         </form>
         <form action="adminPregled.php" method="POST">
             Pretraži po nazivu artikla:
-            <input type="text" name="pretrazi"> 
-            <input type="submit" name="pretraga" value="Pretraži">
+            <input type="text" class="ftekst" name="pretrazi"> 
+            <input type="submit" class="Button2" name="pretraga" value="Pretraži">
         </form>
-            <table border= 1>
+            <table id = "admintabla" border= 1>
                 <tr>
                     <th>Naziv:</th>
                     <th>Cijena:</th>
@@ -112,15 +120,15 @@
                                 <td><?php echo $row["artikl_cijena"]; ?></td>
                                 <td><?php echo $row["popust"]; ?></td>
                                 <td><?php echo $row["artikl_kategorija"]; ?></td>
-                                <td><img src="<?php echo $row["slika"]; ?>"></td>
+                                <td><img class="image" src="<?php echo $row["slika"]; ?>"></td>
                                 <td><?php echo $row["opis"]; ?></td>
                                 <form action="adminUrediArtikl.php?" method="GET"> 
-                                <td><input type="submit" name="uredi" value="Uredi"></td>
+                                <td><input type="submit" class="Button2" name="uredi" value="Uredi"></td>
                                 <input type="text" name="id" value="<?php echo $row["artikl_id"]; ?>" hidden>
                                 </form>
                                 <form action="adminPregled.php?" method="POST">  
                                     <input type="text" name="id" value="<?php echo $row["artikl_id"]; ?>" hidden>          
-                                    <td><input type="submit" name="izbrisi" value="Izbrisi"></td>
+                                    <td><input type="submit" class="Button2" name="izbrisi" value="Izbrisi"></td>
                                 </form>
                             </tr>
                             
@@ -169,7 +177,7 @@
                 ?>
         </div>
 
-        
+    </div>
     </body>
 
 
