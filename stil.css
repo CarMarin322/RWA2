@@ -253,6 +253,7 @@ flex-wrap: nowrap;
     font-size: 15px;
     font: monospace;
     font: bold 20px/1 monospace;
+    border-radius: 12px;
 }
 .myButton:hover {
     background-color:rgba(0, 0, 0, 0.322);
@@ -267,6 +268,7 @@ flex-wrap: nowrap;
     text-decoration: none;
     text-align: center;
     font: bold 20px/1 monospace;
+    border-radius: 12px;
 }
 .Button2:hover {
     background-color:rgba(0, 0, 0, 0.322);
@@ -282,6 +284,7 @@ flex-wrap: nowrap;
   text-decoration: none;
   text-align: center;
   font: bold 20px/1 monospace;
+  border-radius: 12px;
 }
 .Button3:hover {
   background-color:rgba(0, 0, 0, 0.322);

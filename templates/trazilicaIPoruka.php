@@ -8,7 +8,7 @@
         <form action="trazilicaPrikaz.php?page=1" method="GET">
             
             <input type="text" name="trazilica" class="trazilica" placeholder="Search.."> <br> <br>
-            <button type="submit" class = "myButton">Pretraži</button>
+            <button type="submit" class = "Button3">Pretraži</button>
         </form>
         <br> <br> <br> <br>
             <a href="poruka.php">
