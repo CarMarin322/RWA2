@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2020 at 12:10 AM
+-- Generation Time: Jan 28, 2020 at 02:32 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`user`, `password`) VALUES
 CREATE TABLE `artikl` (
   `artikl_id` int(11) NOT NULL,
   `artikl_naziv` varchar(255) NOT NULL,
-  `artikl_cijena` int(11) NOT NULL,
+  `artikl_cijena` double(11,0) NOT NULL,
   `artikl_kategorija` int(255) NOT NULL,
   `slika` varchar(256) NOT NULL,
   `opis` varchar(256) NOT NULL,
@@ -61,27 +61,27 @@ CREATE TABLE `artikl` (
 --
 
 INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_cijena`, `artikl_kategorija`, `slika`, `opis`, `popust`) VALUES
-(3, 'HP Omen 17 7SB06EA', 9539, 1, 'slike/generic_computer.svg', 'opis', 50),
+(3, 'HP Omen 17 7SB06EA', 9539, 1, 'slike/HP Omen 17 7SB06EA.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has sur', 50),
 (6, 'ACER Predator Helios 300', 9974, 1, 'slike/generic_computer.svg', '', NULL),
-(11, 'HP Pavilion 5KR58EA', 4749, 2, '', '', NULL),
-(12, 'Acer Aspire C22-865', 4369, 2, '', '', NULL),
-(13, 'Acer Veriton DT.VQXEX.081', 3500, 2, '', '', NULL),
-(14, 'LENOVO V530', 4750, 2, '', '', NULL),
-(20, 'Radeon RX 5700 XT', 3990, 3, '', '', NULL),
-(21, 'KINGSTON 16 GB', 835, 3, '', '', NULL),
-(22, 'SROCK B450 Gaming', 759, 3, '', '', NULL),
-(27, 'ACER V226HQ', 664, 4, '', '', NULL),
-(28, 'AOC 22B1H', 664, 4, '', '', NULL),
-(30, 'SAMSUNG LS27R7', 2759, 4, '', '', NULL),
-(35, 'LOGITECH Z906', 2599, 5, '', '', NULL),
-(36, 'GAMDIAS HERMES P2', 399, 5, '', '', NULL),
-(37, 'REDRAGON Cobra', 189, 5, '', '', NULL),
-(38, 'HP DeskJet 2130', 199, 5, '', '', NULL),
-(49, 'DELOCK HDMI', 50, 6, '', '', NULL),
-(50, 'DELOCK audio jack 3.5mm', 21, 6, '', '', NULL),
-(62, 'dsqd', 100, 1, '', '', NULL),
-(63, 'hehe', 100, 2, '', '', NULL),
-(67, 'komp', 2000, 5, 'cac', 'fkwefkljewlk', 20);
+(11, 'HP Pavilion 5KR58EA', 4749, 2, 'slike/generic_computer.svg', '', NULL),
+(12, 'Acer Aspire C22-865', 4369, 2, 'slike/generic_computer.svg', '', NULL),
+(13, 'Acer Veriton DT.VQXEX.081', 3500, 2, 'slike/generic_computer.svg', '', NULL),
+(14, 'LENOVO V530', 4750, 2, 'slike/generic_computer.svg', '', NULL),
+(20, 'Radeon RX 5700 XT', 3990, 3, 'slike/generic_computer.svg', '', NULL),
+(21, 'KINGSTON 16 GB', 835, 3, 'slike/generic_computer.svg', '', NULL),
+(22, 'SROCK B450 Gaming', 759, 3, 'slike/generic_computer.svg', '', NULL),
+(27, 'ACER V226HQ', 664, 4, 'slike/generic_computer.svg', '', NULL),
+(28, 'AOC 22B1H', 664, 4, 'slike/generic_computer.svg', '', NULL),
+(30, 'SAMSUNG LS27R7', 2759, 4, 'slike/generic_computer.svg', '', NULL),
+(35, 'LOGITECH Z906', 2599, 5, 'slike/generic_computer.svg', '', NULL),
+(36, 'GAMDIAS HERMES P2', 399, 5, 'slike/generic_computer.svg', '', NULL),
+(37, 'REDRAGON Cobra', 189, 5, 'slike/generic_computer.svg', '', NULL),
+(38, 'HP DeskJet 2130', 199, 5, 'slike/generic_computer.svg', '', NULL),
+(49, 'DELOCK HDMI', 50, 6, 'slike/generic_computer.svg', '', NULL),
+(50, 'DELOCK audio jack 3.5mm', 21, 6, 'slike/generic_computer.svg', '', NULL),
+(63, 'hehe', 100, 2, 'slike/generic_computer.svg', '', NULL),
+(67, 'komp', 2000, 5, 'slike/generic_computer.svg', 'fkwefkljewlk', 20),
+(68, 'RAZER Blade 17 Pro ', 19250, 1, 'slike/generic_computer.svg', 'hgkghkj', NULL);
 
 -- --------------------------------------------------------
 
@@ -270,7 +270,7 @@ ALTER TABLE `na_artikl`
 -- AUTO_INCREMENT for table `artikl`
 --
 ALTER TABLE `artikl`
-  MODIFY `artikl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `artikl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `kartica`
@@ -301,12 +301,6 @@ ALTER TABLE `narudzba`
 --
 
 --
--- Constraints for table `artikl`
---
-ALTER TABLE `artikl`
-  ADD CONSTRAINT `artikl_ibfk_1` FOREIGN KEY (`artikl_id`) REFERENCES `na_artikl` (`artikl_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `kartica`
 --
 ALTER TABLE `kartica`
@@ -316,7 +310,7 @@ ALTER TABLE `kartica`
 -- Constraints for table `kategorija`
 --
 ALTER TABLE `kategorija`
-  ADD CONSTRAINT `kategorija_ibfk_1` FOREIGN KEY (`kategorija_id`) REFERENCES `artikl` (`artikl_kategorija`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `kategorija_ibfk_1` FOREIGN KEY (`kategorija_id`) REFERENCES `artikl` (`artikl_kategorija`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `narudzba`
