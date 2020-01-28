@@ -254,9 +254,10 @@ flex-wrap: nowrap;
     font: monospace;
     font: bold 20px/1 monospace;
     border-radius: 12px;
+    border-color: rgba(0, 38, 255, 0);
 }
 .myButton:hover {
-    background-color:rgba(0, 0, 0, 0.322);
+    background-color:rgba(4, 0, 255, 0.322);
     color: white;
 }
 
@@ -269,10 +270,11 @@ flex-wrap: nowrap;
     text-align: center;
     font: bold 20px/1 monospace;
     border-radius: 12px;
+    border-color: rgba(0, 38, 255, 0);
 }
 .Button2:hover {
-    background-color:rgba(0, 0, 0, 0.322);
-    color: white;
+  background-color:rgba(4, 0, 255, 0.322);
+  color: white;
 }
 
 
@@ -285,9 +287,10 @@ flex-wrap: nowrap;
   text-align: center;
   font: bold 20px/1 monospace;
   border-radius: 12px;
+  border-color: rgba(0, 38, 255, 0);
 }
 .Button3:hover {
-  background-color:rgba(0, 0, 0, 0.322);
+  background-color:rgba(4, 0, 255, 0.322);
   color: white;
 }
 
@@ -298,6 +301,7 @@ flex-wrap: nowrap;
     border-width: 7px;
     border-color: rgb(69, 196, 255);
     background-color:rgba(255, 255, 255, 0.849);
+    border-radius: 20px;
 
     position: relative;
     width: 290px;
@@ -315,6 +319,7 @@ flex-wrap: nowrap;
     border-width: 7px;
     border-color: rgb(69, 196, 255);
     background-color:rgba(255, 255, 255, 0.849);
+    border-radius: 20px;
 
     position: relative;
     width: 499px;
@@ -464,8 +469,8 @@ flex-wrap: nowrap;
 }
 
 .mail {
-  margin-top: 400px;
-  margin-left: 200px;
+  margin-top: 20%;
+  margin-left: 10%;
   position: fixed;
 }
 

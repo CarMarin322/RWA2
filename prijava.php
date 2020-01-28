@@ -114,7 +114,7 @@
             
             
                 <b>NOVI KORISNIK:</b> <br>  <br>
-                <button class="Button2"  onclick="window.open('http://localhost/dashboard/RWA/registracija.php', '_self')"> REGISTRIRAJ SE! </button>
+                <button class="Button3"  onclick="window.open('http://localhost/dashboard/RWA/registracija.php', '_self')"> REGISTRIRAJ SE! </button>
                 <br> <br>
                 <a href="admin.php"><h6>Admin prijava</h6></a>
                 <?php
