@@ -13,7 +13,7 @@
         <br> <br> <br> <br>
             <a href="poruka.php">
             <figure class="chat-icon">
-  <img class ="mail"  src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/chat-2-icon.png" alt="A chat icon" >
+  <img class ="mail"  src="slike/chaticon.png" alt="A chat icon" >
 </figure>
             </a>'
     </body>
