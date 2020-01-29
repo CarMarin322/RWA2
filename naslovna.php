@@ -54,7 +54,8 @@
 			<?php
 			$conn = OpenConn();
 			$sql = "SELECT * FROM `artikl`
-					WHERE `popust` IS NOT NULL";
+					WHERE `popust` IS NOT NULL
+					AND `popust` != 0";
             $result = $conn->query($sql);
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){

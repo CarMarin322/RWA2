@@ -4,12 +4,17 @@
     $error = $brojErr = $cvvErr= '';
     $save = true;
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(empty($_POST['brojKartice']) || empty($_POST['brojKartice'])){
+        if(empty($_POST['brojKartice']) || empty($_POST['brojKartice']) || empty($_POST['mjesecIstek']) || empty($_POST['godinaIstek'])){
             $error = "Morate ispuniti sve podatke o kartici";
         }else{
             $dostava = $_SESSION['dostava'];
             $napomena = $_SESSION['napomena'];
             $korisnikId = $_SESSION['korisnikId'];
+            $godinaIstek = $_POST['godinaIstek'];
+            $mjesecIstek = $_POST['mjesecIstek'];
+            $istek=mktime(0, 0, 0, 8, 12, 2014);
+            echo "Created date is " . date("Y-m-d", $istek);
+            
             $placanje = "kartica";
             $datum = date("Y-m-d");
             $ukupno = $_SESSION['ukupno'];
@@ -40,8 +45,15 @@
                 $sql = "INSERT INTO `narudzba` ( `kupac_id`, `status`, `datum`, `dostava`, `napomena`, `placanje`, `ukupno`)
                 VALUES ('$korisnikId', 'naruceno', '$datum', '$dostava', '$napomena', '$placanje', '$ukupno')";
                 if($conn->query($sql)){
+                   
                     $sql = "INSERT INTO `kartica` (`broj`, `istek`, `cvv`, `kupacId`)
-                    VALUES ('$brojKartice', '$godinaIstek-$mjesecIstek', '$cvv', '$korisnikId')";
+                    VALUES ('$brojKartice', '$godinaIstek-$mjesecIstek-1', '$cvv', '$korisnikId')";
+                    if(!$conn->query($sql)){
+                        echo "Error: " . $sql . "<br>" . $conn->error;
+                        $err = true;
+                        echo $godinaIstek;
+                        echo $mjesecIstek;
+                    } 
                     
                     $sql = "SELECT `narudzba_id` FROM `narudzba` ORDER BY `narudzba_id` DESC LIMIT 1";
                     $result = $conn->query($sql);
@@ -163,6 +175,7 @@
 <input type="text" class="ftekst" name="cvv" placeholder="xxxx"></input> <span style="color:tomato;"><?php echo $cvvErr;?></span>
 <br>
 <span style="color:tomato;"><?php echo $error;?></span>
+
 <h3>Podaci o vlasniku kartice: </h3> 
 <p>*Možete platiti isključivo karticom koja glasi na vaše ime*</p> <br>
 <?php

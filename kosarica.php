@@ -98,9 +98,9 @@
                             <th><?php echo $cijena  . 'kn' ;?></th>
                             <th></th>
                             <th>
-                            <input type="button" class="Button2" value="-" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=-&n=<?php echo $i;?>', '_self')">
+                            <input type="button" class="" value="-" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=-&n=<?php echo $i;?>', '_self')">
                            <?php echo $_SESSION['numArt'][$i];?> 
-                           <input type="button" class="Button2" value="+" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=plus&n=<?php echo $i;?>', '_self')">
+                           <input type="button" class="" value="+" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=plus&n=<?php echo $i;?>', '_self')">
                             </th>
                             <th><input type="button" class="Button2" value="Izbaci" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?izbaci=<?php echo $i;?>', '_self')">
                             </th>

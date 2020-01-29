@@ -53,6 +53,7 @@
 #narudzbatabela{
   font: bold 30px/1 monospace;
   background-color: rgba(95, 142, 243, 0.651);
+  text-align: left; 
 }
 
 #promjenaPodataka{
@@ -295,6 +296,22 @@ flex-wrap: nowrap;
   color: white;
 }
 
+.Button4 {
+  width: 10px;
+  height: 10px;
+  background-color:rgba(0, 132, 255, 0.568);
+  color: rgb(0, 0, 0);
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+  font: bold 20px/1 monospace;
+  border-radius: 12px;
+  border-color: rgba(0, 38, 255, 0);
+}
+.Button2:hover {
+background-color:rgba(4, 0, 255, 0.322);
+color: white;
+}
 
 
 #artikl {
@@ -325,6 +342,7 @@ flex-wrap: nowrap;
 
     position: relative;
     width: 95%;
+    height: 200%;
     text-align: center; 
     align-items: center;
     line-height: 1.5;

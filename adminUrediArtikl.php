@@ -40,9 +40,9 @@ session_start();
             $conn->query($sql); 
             $sql = "UPDATE `artikl` SET `artikl_naziv` = '$naziv',
             `artikl_cijena` = '$cijena', `artikl_kategorija` = '$kategorija',
-            `slika` = '$slika', `opis` = '$opis', `popust` = $popust
-            WHERE `artikl`.`artikl_id` = '$id'";
-            $conn->query($sql); 
+            `slika` = '$slika', `opis` = '$opis', `popust` = '$popust'
+            WHERE `artikl_id` = '$id'";
+            if(!$conn->query($sql)) $urediErr = $conn->error; 
             $sql = "SET FOREIGN_KEY_CHECKS=1";
             $conn->query($sql); 
             }
@@ -107,7 +107,7 @@ session_start();
                             <img class="imageuredi" src="<?php echo $row["slika"]; ?>"> 
                             <br> <br>
                             Opis:<br>
-                            <textarea name="opis" cols="60" rows="15" value="<?php echo $row['opis'];?>"> </textarea>
+                            <textarea name="opis" cols="60" rows="15" value="<?php echo $row['opis'];?>"> <?php echo $row['opis'];?></textarea>
                             <br> <br>
                             
                            <input type="submit" class="Button2" value="Promijeni">
@@ -127,7 +127,7 @@ session_start();
            ?>
 
 <?php
-
+    
 }else{
     ?>
     <p>Niste ovlašteni pristupiti ovoj stranici</p>

@@ -89,7 +89,7 @@
                 <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>"><img class="image" src="<?php echo $row["slika"]; ?>" alt="">  </a><br>
                 <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>">  <span><?php echo $row["artikl_naziv"]; ?> </span></a> <br> 
                 <?php
-                if($row["popust"] == NULL){
+                if($row["popust"] == NULL || $row["popust"] == 0){
                 ?>
                 <b>Cijena: </b> <span><?php echo $row["artikl_cijena"]; ?> kn</span> <br>
                 <?php

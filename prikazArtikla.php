@@ -59,7 +59,7 @@
             <img  class="imageprikaz" src="<?php echo $row["slika"]; ?>" alt="" > <br>
             <b>Naziv: </b> <span><?php echo $row["artikl_naziv"]; ?> </span> <br> 
             <?php
-                if($row["popust"] == NULL){
+                if($row["popust"] == NULL || $row["popust"] == 0){
                 ?>
                 <b>Cijena: </b> <span><?php echo $row["artikl_cijena"]; ?> kn</span> <br>
                 <?php
