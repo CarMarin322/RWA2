@@ -354,16 +354,16 @@
                 *Ulica: <input type="text" class="ftekst" name="ulica"><br>
                 <span class="error"><?php echo $ulica_err;?></span> <br>
                 *Poštanski broj: <input type="text" class="ftekst" name="pobr">
-                <span class="error"><?php echo $pobr_err;?></span><br>
-                 *Grad: <input type="text"  class="ftekst" name="grad">
-                <span class="error"><?php echo $grad_err;?></span><br>
+                <span class="error"><?php echo $pobr_err;?></span><br> <br>
+                 *Grad: <input type="text"  class="ftekst" name="grad"> 
+                <span class="error"><?php echo $grad_err;?></span><br> <br>
                 *Zemlja: <input type="text"  class="ftekst" name="zemlja">
                 <span class="error"><?php echo $zemlja_err;?></span><br><br>
                  <b>Kontakt:</b>  <br><br>
                 Telefon:<input type="text"  class="ftekst" name="telefon">
                 <span class="error"><?php echo $telefon_err;?></span><br> <br> <br>
                 *Lozinka: <input type="password"   class="ftekst"  name="lozinka">
-                <span class="error"><?php echo $lozinka_err;?></span><br>
+                <span class="error"><?php echo $lozinka_err;?></span><br> <br>
                 *Ponovi lozinku: <input type="password" class="ftekst"  name="provjera_lozinke">
                 <span class="error"><?php echo $provjera_err;?></span><br> <br>
                 <input type="submit" class="Button2" value="Registriraj se!">
