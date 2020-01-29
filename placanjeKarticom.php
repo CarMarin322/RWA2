@@ -10,7 +10,7 @@
             $dostava = $_SESSION['dostava'];
             $napomena = $_SESSION['napomena'];
             $korisnikId = $_SESSION['korisnikId'];
-            $placanje = $_POST['placanje'];
+            $placanje = "kartica";
             $datum = date("Y-m-d");
             $ukupno = $_SESSION['ukupno'];
             $err = false;

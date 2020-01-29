@@ -5,7 +5,7 @@
     </head>
 
     <body>
-        <form action="trazilicaPrikaz.php?page=1" method="GET">
+        <form action="trazilicaPrikaz.php" method="GET">
             
             <input type="text" name="trazilica" class="trazilica" placeholder="Search.."> <br> <br>
             <button type="submit" class = "Button3">Pretraži</button>
@@ -15,6 +15,6 @@
             <figure class="chat-icon">
   <img class ="mail"  src="slike/chaticon.png" alt="A chat icon" >
 </figure>
-            </a>'
+            </a>
     </body>
 </html>

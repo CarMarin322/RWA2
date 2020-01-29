@@ -180,6 +180,7 @@ flex-wrap: nowrap;
     background-color: rgba(255, 255, 255, 0);
     padding: 20px;
     flex-wrap: wrap;
+  
 
 }
 
@@ -305,6 +306,7 @@ flex-wrap: nowrap;
 
     position: relative;
     width: 290px;
+    height: 400px;
     text-align: center; 
     line-height: 1.5;
     margin: 10px;
@@ -322,7 +324,7 @@ flex-wrap: nowrap;
     border-radius: 20px;
 
     position: relative;
-    width: 499px;
+    width: 95%;
     text-align: center; 
     align-items: center;
     line-height: 1.5;
