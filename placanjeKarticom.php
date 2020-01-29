@@ -13,6 +13,9 @@
             $placanje = "kartica";
             $datum = date("Y-m-d");
             $ukupno = $_SESSION['ukupno'];
+            if($dostava  == "dostava"){
+                $ukupno += 20;
+            }
             $err = false;
             $brojKartice = test_input($_POST["brojKartice"]);
             if(is_numeric($brojKartice) == false && $brojKartice != ""){
@@ -113,7 +116,7 @@
                 
 <h3>Podaci o kartici:</h3> <br> 
 *Broj kreditne/debitne kartice: 
-<input type="text" class="ftekst" name="brojKartice" placeholder="Upišite broj kartice"> </input> <?php echo $brojErr;?>
+<input type="text" class="ftekst" name="brojKartice" placeholder="Upišite broj kartice"> </input> <span style="color:tomato;"><?php echo $brojErr;?></span>
 <br> <br>
 *Datum isteka kartice:
 <select name="mjesecIstek">
@@ -157,9 +160,9 @@
 </select>
 <br> <br>
 *CVV kod:
-<input type="text" class="ftekst" name="cvv" placeholder="xxxx"></input> <?php echo $cvvErr;?>
+<input type="text" class="ftekst" name="cvv" placeholder="xxxx"></input> <span style="color:tomato;"><?php echo $cvvErr;?></span>
 <br>
-<?php echo $error;?>
+<span style="color:tomato;"><?php echo $error;?></span>
 <h3>Podaci o vlasniku kartice: </h3> 
 <p>*Možete platiti isključivo karticom koja glasi na vaše ime*</p> <br>
 <?php

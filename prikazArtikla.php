@@ -75,6 +75,7 @@
                     
                 }
                 ?>
+                <br>
             <b>Specifikacije: </b> <br><br> </b> <span><?php echo $row["opis"]; ?></span>
             <br><br>
                 <br> <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>&cart=<?php echo $row["artikl_id"]?>"><button class="Button2">Spremi u košaricu</button></a></div>

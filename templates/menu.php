@@ -33,6 +33,13 @@
         <?php
         }
         ?>
+        <?php
+        if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == 'admin'){
+?>
+            <a  href="admin.php"><button class="Button2"> Pregled </button></a>
+        <?php
+        }
+        ?>
         <p class="textformat"> <?php if (isset($_SESSION['num'])){
                     echo $_SESSION['num'];
                 } ?> </p>

@@ -16,10 +16,11 @@
         
         <div id="Poruka">
         <?php
+        $poruka ='';
         function prikazi_obrazac($email="",$message="",$subject="") {  
         ?>
 
-        <h2>Pošaljite nam email:</h2>
+        <h2>Pošaljite nam poruku:</h2>
 
         <form class="form" action="poruka.php" method="post">
 
@@ -33,7 +34,7 @@
             <textarea rows=10 cols=50 name=message><?php print($message); ?></textarea>
             <br>
 
-            <input type=submit class="Button2" value="Posalji E-mail">
+            <input type=submit class="Button2" value="Pošalji poruku">
         </form>
         <?php
         }
@@ -41,27 +42,37 @@
             prikazi_obrazac();
         }else {
             if (empty($_POST['message'])) {
-                print("Tijelo poruke je prazno! Upisite neki tekst i obavite <i>resend</i>.");
+                $poruka ="Tijelo poruke je prazno! Upisite neki tekst i obavite <i>resend</i>.";
                 prikazi_obrazac($_POST['email'], $_POST['message'], $_POST['subject']);
             } else {
             if (empty($_POST['email'])) {
                 $email="anonymous";
+            }else{
+                $email=$_POST['email'];
             }
             
             if (empty($_POST['subject'])) {
                 $subject="Prazan predmet";
+            }else{
+                $subject=$_POST['subject'];
             }
-        
-            $sent = mail("valentina20202@gmail.com", $_POST['subject'], $_POST['message'], "From: " . $_POST['email']);
-        
-            if ($sent) {
-                print("<H1>Vaša poruka je poslana.</H1>");
-            } else {
-                print("<p>Poslužitelj nije u mogućnosti poslati vaš e-mail.");
+            
+            $message=$_POST['message'];
+            $datum = date("Y-m-d");
+            include_once 'db_connection.php';
+            $conn = OpenConn();
+            $sql = "INSERT INTO `poruka` (`email`, `id`, `predmet`, `poruka`, `datum`)
+                    VALUES ('$email', NULL, '$subject', '$message', '$datum');";
+            if($conn->query($sql)){
+                echo "Poruka je poslana";
+            }else {
+                echo "Poruka nije poslana";
             }
           }
         }
         ?>
+
+        <p><span style="color:tomato;"><?php echo $poruka;?></span></p>
         </div>
 
         <div id="trazilica">

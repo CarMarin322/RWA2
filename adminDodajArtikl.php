@@ -65,9 +65,10 @@
 
         <div class="row">
 
-        <?php if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == "admin"){ ?>
+        
 
         <div id="dodajArtikl">
+        <?php if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == "admin"){ ?>
             <h3>Dodavanje Artikala:</h3>
             <br>
             <form action="adminDodajArtikl.php" method ="POST">
@@ -99,16 +100,21 @@
             <br>
             <p> <?php echo $dodajErr;?></p>
         
-        </div>
+        
+            <?php
 
-        </div>
-        <?php
         }else{
             ?>
             <p>Niste ovlašteni pristupiti ovoj stranici</p>
             <?php
         }
                 ?>
+        
+        </div>
+
+        </div>
+        
+        
         
     </body>
 

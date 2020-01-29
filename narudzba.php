@@ -19,7 +19,7 @@
         <?php
             if (!isset($_SESSION['korisnikId'])){
                 ?>
-                   <p>Morate se prijaviti kako bi mogli naruciti</p> 
+                   <p>Morate se prijaviti kao korisnik kako bi mogli naručiti</p> 
                    <a href="prijava.php">Prijava</a>
                 <?php
             }else{

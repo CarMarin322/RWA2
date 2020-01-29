@@ -39,9 +39,10 @@
 
         <div class="row">
 
-        <?php if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == "admin"){ ?>
+        
 
         <div id="AdminPregled">
+        <?php if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == "admin"){ ?>
         <h3>Pregled artikala: </h3> <br>
         <form action="adminPregled.php" method="GET">
         Broj artikala po stranici u pregledu kategorija: 

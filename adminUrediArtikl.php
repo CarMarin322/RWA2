@@ -73,6 +73,7 @@ session_start();
 
         
         <div id="promjenaPodataka">
+        <?php if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] == "admin"){ ?>
            <?php
            
           
@@ -124,11 +125,17 @@ session_start();
 
            closeCon($conn);
            ?>
+
+<?php
+
+}else{
+    ?>
+    <p>Niste ovlašteni pristupiti ovoj stranici</p>
+    <?php
+}
+        ?>
         </div>
 
-        <div id="trazilica">
-			<?php include 'templates/trazilicaIPoruka.php'?>
-        </div>
 
         </div>
     </body>

@@ -20,7 +20,7 @@
         
         
         <div id="Zavrsetak">
-           Uspješno ste izvršili narudžbu! <br> :)
+          <span style="color:rgb(69, 196, 255);"> Uspješno ste izvršili narudžbu! <br> :)</span>
         </div>
         <div id="trazilica">
 			<?php include 'templates/trazilicaIPoruka.php'?>

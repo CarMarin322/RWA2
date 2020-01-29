@@ -139,7 +139,9 @@
 
              for($i = 1; $i <= $pages; $i++){
                  ?>
-                 <a href="prikaziKategoriju.php?catName=<?php echo $catname; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                 <a href="prikaziKategoriju.php?catName=<?php echo $catname; ?>&page=<?php echo $i; ?>"><span style="color:rgb(69, 196, 255);">
+                 <?php echo $i; ?></span></a>
+                 
                  <?php
                 
              }

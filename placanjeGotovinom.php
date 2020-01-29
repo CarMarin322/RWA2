@@ -7,6 +7,9 @@
         $korisnikId = $_SESSION['korisnikId'];
         $placanje = "gotovina";
         $ukupno = $_SESSION['ukupno'];
+        if($dostava  == "dostava"){
+            $ukupno += 20;
+        }
         $datum = date("Y-m-d");
         $err = false;
 

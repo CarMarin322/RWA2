@@ -120,7 +120,7 @@
            </table>
            <br>
            <br>
-           <p>Ukupna Cijena:<?php echo $ukupno. ' kn';?></p>
+           <span style="color:rgb(69, 196, 255);"><p>Ukupna Cijena:<?php echo $ukupno. ' kn';?></p></span>
            <br>
            <br>
            <br>
@@ -134,7 +134,7 @@
             }else{
         
                 ?>
-               <p> Kosarica je prazna</p>  <br>
+               <span style="color:rgb(69, 196, 255);"><p>Košarica je prazna</p></span>  <br>
                 <a class="Button2" href="naslovna.php">Povratak na pregled ponude</a>
                 <?php
             }

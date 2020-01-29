@@ -38,7 +38,7 @@
                         unset($_SESSION['numArt']);
                         unset($_SESSION['kosarica']);
                         $_SESSION["prij/odj"] = "Odjava";
-                        header("Location: http://localhost/dashboard/RWA/adminPregled.php");
+                       
                         
                     } 
                     else $err = "Prijava neuspješna : neispravno korisničko ime ili lozinka";
@@ -67,6 +67,9 @@
 
         
         <div id="adminPrijava">
+          <?php
+          if(!isset($_SESSION['korisnik']) && $_SESSION['korisnik'] = 'admin'){
+          ?>
            <form action="admin.php" method="POST">
                <h3>Admin prijava:</h3> <br>
                Korisničko ime:
@@ -79,7 +82,22 @@
                <input type="submit" class="Button2" value="Prijavi se">
            </form>
            <?php
-           echo $err;
+          }else{
+            ?>
+
+            <ul style="list-style-type: none; float:left;">
+            <li><b>OPCIJE PREGLEDA:</b></li>
+
+            <a href="adminPregled.php"><li><button class="Button2"> Pregled artikala  </button></li></a>
+            <a href="adminNarudzbe.php"><li><button class="Button2"> Pregled narudžbi  </button></li></a>
+            <a href="adminPoruke.php"><li><button class="Button2">Pregled poruka </button></li></a>
+
+            
+        </ul>
+           
+
+            <?php
+          }
            ?>
         </div>
 
