@@ -2,14 +2,7 @@
     <head>
     <link rel="stylesheet" type="text/css" href="stil.css">
 
-<style>
-  body {
-    
-    
 
-}
-
-</style>
     </head>
     <a  href="naslovna.php"><img class="kosara" src="slike/logo1.png" width="150" height="150" > </a>
 
@@ -33,7 +26,13 @@
                 }
             ?>
         <span><?php echo $korisnik;?></span>
-        <a  href="profil.php"><button class="Button2"> <?php echo $profil;?> </button></a>
+        <?php
+        if(isset($_SESSION['korisnik']) && $_SESSION['korisnik'] != 'admin'){
+?>
+            <a  href="profil.php"><button class="Button2"> <?php echo $profil;?> </button></a>
+        <?php
+        }
+        ?>
         <p class="textformat"> <?php if (isset($_SESSION['num'])){
                     echo $_SESSION['num'];
                 } ?> </p>

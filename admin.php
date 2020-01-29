@@ -9,7 +9,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
        
         if(empty($_POST["user"]) || empty($_POST["password"])){
-            $err = "Neispravno korisničko ime ili lozinka";
+            $err = "Prijava neuspješna : neispravno korisničko ime ili lozinka";
             $save = false;
         }else{
             $user = test_input($_POST["user"]);
@@ -41,7 +41,7 @@
                         header("Location: http://localhost/dashboard/RWA/adminPregled.php");
                         
                     } 
-                    else $err = "Prijava neuspješna";
+                    else $err = "Prijava neuspješna : neispravno korisničko ime ili lozinka";
                 }
                 }
             }

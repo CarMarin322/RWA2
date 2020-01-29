@@ -58,7 +58,23 @@
         <div id="artiklprikaz">
             <img  class="imageprikaz" src="<?php echo $row["slika"]; ?>" alt="" > <br>
             <b>Naziv: </b> <span><?php echo $row["artikl_naziv"]; ?> </span> <br> 
-            <b>Cijena: </b> <span><?php echo $row["artikl_cijena"]; ?> kn</span> <br><br>
+            <?php
+                if($row["popust"] == NULL){
+                ?>
+                <b>Cijena: </b> <span><?php echo $row["artikl_cijena"]; ?> kn</span> <br>
+                <?php
+                }else{
+                   
+					$novaCijena = $row["artikl_cijena"] * (1 -($row["popust"] / 100));
+				?>
+
+					<b>Cijena: </b> <strike><?php echo $row["artikl_cijena"]; ?> kn</strike> <br> <span><?php echo $novaCijena; ?> kn</span>
+					<br>
+					<span style="color:tomato;"><b>Popust: <?php echo $row["popust"]; ?> %</b></span>
+                <?php
+                    
+                }
+                ?>
             <b>Specifikacije: </b> <br><br> </b> <span><?php echo $row["opis"]; ?></span>
             <br><br>
                 <br> <a href="prikazArtikla.php?artId=<?php echo $row["artikl_id"]?>&cart=<?php echo $row["artikl_id"]?>"><button class="Button2">Spremi u košaricu</button></a></div>
