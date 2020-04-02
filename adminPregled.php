@@ -16,8 +16,8 @@
         $sql = "SET FOREIGN_KEY_CHECKS=1";
         $conn->query($sql);
     }
-    else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["pretraga"])){
-        $pretrazi = $_POST["pretrazi"];
+    else if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["pretraga"])){
+        $pretrazi = $_GET["pretrazi"];
         
     }
     else if ($_SERVER["REQUEST_METHOD"] == "GET"){
@@ -89,7 +89,7 @@
         <form action="adminDodajArtikl.php" method="GET">
             <input type="submit" class="Button2" value="Dodaj artikal">
         </form>
-        <form action="adminPregled.php" method="POST">
+        <form action="adminPregled.php" method="GET">
             Pretraži po nazivu artikla:
             <input type="text" class="ftekst" name="pretrazi"> 
             <input type="submit" class="Button2" name="pretraga" value="Pretraži">
@@ -121,7 +121,7 @@
                                 <td><?php echo $row["artikl_cijena"]; ?></td>
                                 <td><?php echo $row["popust"]; ?></td>
                                 <td><?php echo $row["artikl_kategorija"]; ?></td>
-                                <td><img class="image" src="<?php echo $row["slika"]; ?>"></td>
+                                <td><img class="imageadmin" src="<?php echo $row["slika"]; ?>"></td>
                                 <td><?php echo $row["opis"]; ?></td>
                                 <form action="adminUrediArtikl.php?" method="GET"> 
                                 <td><input type="submit" class="Button2" name="uredi" value="Uredi"></td>
@@ -145,15 +145,15 @@
                             <td><?php echo $row["artikl_cijena"]; ?></td>
                             <td><?php echo $row["popust"]; ?></td>
                             <td><?php echo $row["artikl_kategorija"]; ?></td>
-                            <td><img src="<?php echo $row["slika"]; ?>"></td>
+                            <td><img class="imageadmin" src="<?php echo $row["slika"]; ?>"></td>
                             <td><?php echo $row["opis"]; ?></td>
                             <form action="adminUrediArtikl.php?" method="GET"> 
-                            <td><input type="submit" name="uredi" value="Uredi"></td>
+                            <td><input type="submit" class="Button2" name="uredi" value="Uredi"></td>
                             <input type="text" name="id" value="<?php echo $row["artikl_id"]; ?>" hidden>
                             </form>
                             <form action="adminPregled.php?" method="POST">  
                                 <input type="text" name="id" value="<?php echo $row["artikl_id"]; ?>" hidden>          
-                                <td><input type="submit" name="izbrisi" value="Izbrisi"></td>
+                                <td><input type="submit" class="Button2" name="izbrisi" value="Izbrisi"></td>
                             </form>
                         </tr>
                         

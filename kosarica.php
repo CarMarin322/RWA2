@@ -98,9 +98,9 @@
                             <th><?php echo $cijena  . 'kn' ;?></th>
                             <th></th>
                             <th>
-                            <input type="button" class="" value="-" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=-&n=<?php echo $i;?>', '_self')">
+                            <input type="button" class="Button4" value="-" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=-&n=<?php echo $i;?>', '_self')">
                            <?php echo $_SESSION['numArt'][$i];?> 
-                           <input type="button" class="" value="+" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=plus&n=<?php echo $i;?>', '_self')">
+                           <input type="button" class="Button4" value="+" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?kol=plus&n=<?php echo $i;?>', '_self')">
                             </th>
                             <th><input type="button" class="Button2" value="Izbaci" onclick="window.open('http://localhost/dashboard/RWA/kosarica.php?izbaci=<?php echo $i;?>', '_self')">
                             </th>
@@ -124,12 +124,8 @@
            <br>
            <br>
            <br>
-           <form action="naslovna.php" method="post">
-                <button class="Button3" type="submit">Povratak na pregled ponude</button>
-           </form>
-           <form  action="narudzba.php" method="post">
-                <button class="Button3" type="submit">Nastavak na odabir dostave</button>
-           </form>
+           <a class="Button2" href="naslovna.php">Povratak na pregled ponude</a>
+           <a class="Button2" href="narudzba.php">Nastavak na odabir dostave</a>
            <?php
             }else{
         

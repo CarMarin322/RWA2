@@ -8,7 +8,8 @@
     
     <body>
     <?php 
-        $save = true;           
+        $save = true; 
+        $savee = false;          
         $ime_err = $ulica_err= $prezime_err = $rod_err = $email_err = $lozinka_err = $provjera_err = $rodenje_err = $telefon_err = $grad_err = $zemlja_err = $pobr_err = $datum_err = "";
         $ime = $prezime = $rod = $dan = $mjesec = $godina = $email = $ulica = $pobr = $grad = $zemlja = $telefon = $lozinka = $provjera_lozinke = "";
         
@@ -155,7 +156,7 @@
             }
                     
             if($save == true){
-              
+                $savee = true; 
 
                 $sql = "INSERT INTO `kupac` (`kupac_id`, `kupac_ime`, `kupac_prezime`, `kupac_mail`, `rod`, `ulica`, `postanski`, `grad`, `zemlja`, `telefon`, `lozinka`, `rođenje`) 
                 VALUES (NULL, '$ime', '$prezime', '$email', '$rod', '$ulica', '$pobr', '$grad', '$zemlja', '$telefon', '$lozinka', '$godina-$mjesec-$dan')";
@@ -369,7 +370,14 @@
                 <input type="submit" class="Button2" value="Registriraj se!">
             </form>
 
-      
+            <?php
+                if($savee){
+                    ?> 
+                    <span class="error"><p>Uspješna registracija!</p></span>
+                    <?php
+                }
+            ?>
+        
         </div>
 
     </div>

@@ -4,7 +4,7 @@
 
 
     </head>
-    <a  href="naslovna.php"><img class="kosara" src="slike/logo.png" width="150" height="150" > </a>
+    <a  href="naslovna.php"><img class="logo" src="slike/logo.png" > </a>
 
         
             <?php 
